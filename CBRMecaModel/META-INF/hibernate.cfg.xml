@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.url">jdbc:sqlite:.\db\CBRMecaDB.db</property>
+		<property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+		<property name="hibernate.dialect">br.unb.ppmec.cbrmeca.db.dialect.SQLiteDialect</property>
+		<property name="hibernate.connection.username">jmtstorres</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<!-- DB schema will be updated if needed -->
+		<property name="hbm2ddl.auto">update</property>
+		<property name="show_sql">false</property>
+		<property name="format_sql">false</property>
+		<mapping class="br.unb.ppmec.cbrmeca.db.model.Atributo"></mapping>
+		<mapping class="br.unb.ppmec.cbrmeca.db.model.Caso"></mapping>
+		<mapping class="br.unb.ppmec.cbrmeca.db.model.Conceito"></mapping>
+		<mapping class="br.unb.ppmec.cbrmeca.db.model.Funcao"></mapping>
+		<mapping class="br.unb.ppmec.cbrmeca.db.model.FuncaoCaso"></mapping>
+		<mapping class="br.unb.ppmec.cbrmeca.db.model.Solucao"></mapping>
+		<mapping class="br.unb.ppmec.cbrmeca.db.model.ImagemConceito"></mapping>
+		<mapping class="br.unb.ppmec.cbrmeca.db.model.ItemAvaliacao"></mapping>
+		<mapping class="br.unb.ppmec.cbrmeca.db.model.Palavra"></mapping>
+	</session-factory>
+</hibernate-configuration>
