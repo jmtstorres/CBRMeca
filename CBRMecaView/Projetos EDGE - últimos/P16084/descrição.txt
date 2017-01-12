@@ -1,0 +1,3 @@
+Physiological Lung Model
+
+This project aims to improve the current “balloon in rigid cylinder” model used in RIT’s Systems Physiology Dynamics and Controls laboratory. The end goal is to prototype a device possessing physiologically relevant lung capacities and flow rates, as well as simulate accurate diaphragm and rib cage movements during various breathing patterns. It is expected to maximize ease of use.

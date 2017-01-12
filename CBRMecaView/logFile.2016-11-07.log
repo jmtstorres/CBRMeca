@@ -1,0 +1,24 @@
+2016-11-07 20:58:58,172 - [INFO] - from org.deeplearning4j.models.embeddings.loader.WordVectorSerializer in Timer-0
+                
+Word2Vec conf. JSON: {"batchSize":100,"elementsLearningAlgorithm":null,"epochs":1,"hugeModelExpected":false,"iterations":5,"layersSize":300,"learningRate":0.025,"learningRateDecayWords":0,"minLearningRate":1.0E-4,"minWordFrequency":200,"negative":0.0,"sampling":0.0,"scavengerActivationThreshold":2000000,"scavengerRetentionDelay":3,"seed":0,"sequenceLearningAlgorithm":null,"stop":"STOP","stopList":[],"unk":"UNK","useAdaGrad":false,"vocabSize":14253,"window":3}
+
+2016-11-07 21:02:28,415 - [INFO] - from org.deeplearning4j.models.embeddings.loader.WordVectorSerializer in Timer-0
+                
+Word2Vec conf. JSON: {"batchSize":100,"elementsLearningAlgorithm":null,"epochs":1,"hugeModelExpected":false,"iterations":5,"layersSize":300,"learningRate":0.025,"learningRateDecayWords":0,"minLearningRate":1.0E-4,"minWordFrequency":200,"negative":0.0,"sampling":0.0,"scavengerActivationThreshold":2000000,"scavengerRetentionDelay":3,"seed":0,"sequenceLearningAlgorithm":null,"stop":"STOP","stopList":[],"unk":"UNK","useAdaGrad":false,"vocabSize":14253,"window":3}
+
+2016-11-07 22:23:28,014 - [INFO] - from org.deeplearning4j.models.embeddings.loader.WordVectorSerializer in Timer-0
+                
+Word2Vec conf. JSON: {"batchSize":100,"elementsLearningAlgorithm":null,"epochs":1,"hugeModelExpected":false,"iterations":5,"layersSize":300,"learningRate":0.025,"learningRateDecayWords":0,"minLearningRate":1.0E-4,"minWordFrequency":200,"negative":0.0,"sampling":0.0,"scavengerActivationThreshold":2000000,"scavengerRetentionDelay":3,"seed":0,"sequenceLearningAlgorithm":null,"stop":"STOP","stopList":[],"unk":"UNK","useAdaGrad":false,"vocabSize":14253,"window":3}
+
+2016-11-07 22:38:23,159 - [INFO] - from org.deeplearning4j.models.embeddings.loader.WordVectorSerializer in Timer-0
+                
+Word2Vec conf. JSON: {"batchSize":100,"elementsLearningAlgorithm":null,"epochs":1,"hugeModelExpected":false,"iterations":5,"layersSize":300,"learningRate":0.025,"learningRateDecayWords":0,"minLearningRate":1.0E-4,"minWordFrequency":200,"negative":0.0,"sampling":0.0,"scavengerActivationThreshold":2000000,"scavengerRetentionDelay":3,"seed":0,"sequenceLearningAlgorithm":null,"stop":"STOP","stopList":[],"unk":"UNK","useAdaGrad":false,"vocabSize":14253,"window":3}
+
+2016-11-07 22:49:09,626 - [INFO] - from org.deeplearning4j.models.embeddings.loader.WordVectorSerializer in Timer-0
+                
+Word2Vec conf. JSON: {"batchSize":100,"elementsLearningAlgorithm":null,"epochs":1,"hugeModelExpected":false,"iterations":5,"layersSize":300,"learningRate":0.025,"learningRateDecayWords":0,"minLearningRate":1.0E-4,"minWordFrequency":200,"negative":0.0,"sampling":0.0,"scavengerActivationThreshold":2000000,"scavengerRetentionDelay":3,"seed":0,"sequenceLearningAlgorithm":null,"stop":"STOP","stopList":[],"unk":"UNK","useAdaGrad":false,"vocabSize":14253,"window":3}
+
+2016-11-07 22:52:02,368 - [INFO] - from org.deeplearning4j.models.embeddings.loader.WordVectorSerializer in Timer-0
+                
+Word2Vec conf. JSON: {"batchSize":100,"elementsLearningAlgorithm":null,"epochs":1,"hugeModelExpected":false,"iterations":5,"layersSize":300,"learningRate":0.025,"learningRateDecayWords":0,"minLearningRate":1.0E-4,"minWordFrequency":200,"negative":0.0,"sampling":0.0,"scavengerActivationThreshold":2000000,"scavengerRetentionDelay":3,"seed":0,"sequenceLearningAlgorithm":null,"stop":"STOP","stopList":[],"unk":"UNK","useAdaGrad":false,"vocabSize":14253,"window":3}
+

@@ -1,0 +1,4 @@
+2016-11-22 08:08:20,313 - [INFO] - from org.deeplearning4j.models.embeddings.loader.WordVectorSerializer in Timer-0
+                
+Word2Vec conf. JSON: {"batchSize":100,"elementsLearningAlgorithm":null,"epochs":1,"hugeModelExpected":false,"iterations":4,"layersSize":1500,"learningRate":0.025,"learningRateDecayWords":0,"minLearningRate":1.0E-4,"minWordFrequency":80,"negative":0.0,"sampling":0.0,"scavengerActivationThreshold":2000000,"scavengerRetentionDelay":3,"seed":0,"sequenceLearningAlgorithm":null,"stop":"STOP","stopList":[],"unk":"UNK","useAdaGrad":false,"vocabSize":46572,"window":4}
+
