@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.dashboard;
 
 import java.awt.BorderLayout;
@@ -17,15 +20,22 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CBRMecaDashboardPanel.
+ */
 public class CBRMecaDashboardPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -8562037625706065684L;
+	
+	/** The panel content. */
 	private JPanel panelContent;
 	
+	/** The Constant ID_PANEL_STATS. */
 	private static final int ID_PANEL_STATS = 0;
+	
+	/** The Constant ID_PANEL_SEARCH. */
 	private static final int ID_PANEL_SEARCH = 1;
 
 	/**
@@ -109,6 +119,11 @@ public class CBRMecaDashboardPanel extends JPanel {
 		changeContent(ID_PANEL_STATS);
 	}
 	
+	/**
+	 * Change content.
+	 *
+	 * @param panelID the panel id
+	 */
 	private void changeContent(int panelID){
 		JPanel newPanel = null;
 		

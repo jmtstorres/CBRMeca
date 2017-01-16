@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.navigation;
 
 import java.awt.Color;
@@ -16,22 +19,40 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CBRMecaMenu.
+ */
 public class CBRMecaMenu extends JPanel {
 
+	/** The Constant LEFT. */
 	public static final int LEFT = 0;
+	
+	/** The Constant MIDDLE. */
 	public static final int MIDDLE = 1;
+	
+	/** The Constant RIGHT. */
 	public static final int RIGHT = 2;
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -6398195420711409591L;
 
+	/** The btn left. */
 	private JButton btnLeft;
+	
+	/** The btn middle. */
 	private JButton btnMiddle;
+	
+	/** The btn right. */
 	private JButton btnRight;
+	
+	/** The lbl left. */
 	private JLabel lblLeft;
+	
+	/** The lbl middle. */
 	private JLabel lblMiddle;
+	
+	/** The lbl right. */
 	private JLabel lblRight;
 
 	/**
@@ -42,6 +63,9 @@ public class CBRMecaMenu extends JPanel {
 		initialize();
 	}
 
+	/**
+	 * Initialize.
+	 */
 	private void initialize() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0 };
@@ -142,6 +166,11 @@ public class CBRMecaMenu extends JPanel {
 		add(lblRight, gbc_lblRight);
 	}
 
+	/**
+	 * Sets the selected.
+	 *
+	 * @param position the new selected
+	 */
 	public void setSelected(int position) {
 		switch (position) {
 		case LEFT:
@@ -161,6 +190,12 @@ public class CBRMecaMenu extends JPanel {
 		}
 	}
 
+	/**
+	 * Sets the listener.
+	 *
+	 * @param btnPosition the btn position
+	 * @param listener the listener
+	 */
 	public void setListener(int btnPosition, ActionListener listener) {
 		switch (btnPosition) {
 		case LEFT:

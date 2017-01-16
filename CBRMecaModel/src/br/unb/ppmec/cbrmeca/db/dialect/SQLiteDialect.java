@@ -18,7 +18,15 @@ import org.hibernate.dialect.function.VarArgsSQLFunction;
 import org.hibernate.type.IntegerType;
 import org.hibernate.type.StringType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SQLiteDialect.
+ */
 public class SQLiteDialect extends Dialect {
+  
+  /**
+   * Instantiates a new SQ lite dialect.
+   */
   public SQLiteDialect() {
     registerColumnType(Types.BIT, "integer");
     registerColumnType(Types.TINYINT, "tinyint");
@@ -50,6 +58,11 @@ public class SQLiteDialect extends Dialect {
     registerFunction( "substring", new StandardSQLFunction( "substr", StringType.INSTANCE ) );
   }
 
+  /**
+   * Supports identity columns.
+   *
+   * @return true, if successful
+   */
   public boolean supportsIdentityColumns() {
     return true;
   }
@@ -60,6 +73,11 @@ public class SQLiteDialect extends Dialect {
   }
   */
 
+  /**
+   * Checks for data type in identity column.
+   *
+   * @return true, if successful
+   */
   public boolean hasDataTypeInIdentityColumn() {
     return false; // As specify in NHibernate dialect
   }
@@ -73,19 +91,35 @@ public class SQLiteDialect extends Dialect {
   }
   */
 
+  /**
+   * Gets the identity column string.
+   *
+   * @return the identity column string
+   */
   public String getIdentityColumnString() {
     // return "integer primary key autoincrement";
     return "integer";
   }
 
+  /**
+   * Gets the identity select string.
+   *
+   * @return the identity select string
+   */
   public String getIdentitySelectString() {
     return "select last_insert_rowid()";
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#supportsLimit()
+   */
   public boolean supportsLimit() {
     return true;
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#getLimitString(java.lang.String, boolean)
+   */
   protected String getLimitString(String query, boolean hasOffset) {
     return new StringBuffer(query.length()+20).
       append(query).
@@ -93,72 +127,129 @@ public class SQLiteDialect extends Dialect {
       toString();
   }
 
+  /**
+   * Supports temporary tables.
+   *
+   * @return true, if successful
+   */
   public boolean supportsTemporaryTables() {
     return true;
   }
 
+  /**
+   * Gets the creates the temporary table string.
+   *
+   * @return the creates the temporary table string
+   */
   public String getCreateTemporaryTableString() {
     return "create temporary table if not exists";
   }
 
+  /**
+   * Drop temporary table after use.
+   *
+   * @return true, if successful
+   */
   public boolean dropTemporaryTableAfterUse() {
     return false;
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#supportsCurrentTimestampSelection()
+   */
   public boolean supportsCurrentTimestampSelection() {
     return true;
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#isCurrentTimestampSelectStringCallable()
+   */
   public boolean isCurrentTimestampSelectStringCallable() {
     return false;
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#getCurrentTimestampSelectString()
+   */
   public String getCurrentTimestampSelectString() {
     return "select current_timestamp";
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#supportsUnionAll()
+   */
   public boolean supportsUnionAll() {
     return true;
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#hasAlterTable()
+   */
   public boolean hasAlterTable() {
     return false; // As specify in NHibernate dialect
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#dropConstraints()
+   */
   public boolean dropConstraints() {
     return false;
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#getAddColumnString()
+   */
   public String getAddColumnString() {
     return "add column";
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#getForUpdateString()
+   */
   public String getForUpdateString() {
     return "";
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#supportsOuterJoinForUpdate()
+   */
   public boolean supportsOuterJoinForUpdate() {
     return false;
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#getDropForeignKeyString()
+   */
   public String getDropForeignKeyString() {
     throw new UnsupportedOperationException("No drop foreign key syntax supported by SQLiteDialect");
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#getAddForeignKeyConstraintString(java.lang.String, java.lang.String[], java.lang.String, java.lang.String[], boolean)
+   */
   public String getAddForeignKeyConstraintString(String constraintName,
       String[] foreignKey, String referencedTable, String[] primaryKey,
       boolean referencesPrimaryKey) {
     throw new UnsupportedOperationException("No add foreign key syntax supported by SQLiteDialect");
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#getAddPrimaryKeyConstraintString(java.lang.String)
+   */
   public String getAddPrimaryKeyConstraintString(String constraintName) {
     throw new UnsupportedOperationException("No add primary key syntax supported by SQLiteDialect");
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#supportsIfExistsBeforeTableName()
+   */
   public boolean supportsIfExistsBeforeTableName() {
     return true;
   }
 
+  /* (non-Javadoc)
+   * @see org.hibernate.dialect.Dialect#supportsCascadeDelete()
+   */
   public boolean supportsCascadeDelete() {
     return false;
   }

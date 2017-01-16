@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.function;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -20,23 +23,39 @@ import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoDAOImpl;
 import br.unb.ppmec.cbrmeca.view.fragments.cases.function.visual.Node;
 import br.unb.ppmec.cbrmeca.view.fragments.cases.function.visual.Tree;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPanelFunction.
+ */
 public class JPanelFunction extends JPanel {
 	
-    /**
-	 * 
-	 */
+    /** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The fc dao. */
 	private FuncaoCasoDAOImpl fcDao = new FuncaoCasoDAOImpl();
+	
+	/** The dao. */
 	private FuncaoDAOImpl fDao = new FuncaoDAOImpl();
 	
+	/** The block_width. */
 	private int block_width = JPanelFunctionBoxClassification.BLOCK_WIDTH;
+	
+	/** The block_height. */
 	private int block_height = JPanelFunctionBoxClassification.BLOCK_HEIGHT;
 	
+	/** The dim. */
 	private Dimension dim = new Dimension(1, 1);
+	
+	/** The arvore. */
 	private Tree<FuncaoCaso> arvore;
 	
+	/** The image. */
 	private BufferedImage image;
 	
+	/**
+	 * Instantiates a new j panel function.
+	 */
 	public JPanelFunction() {
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(Color.WHITE);
@@ -44,12 +63,21 @@ public class JPanelFunction extends JPanel {
 		setLayout(null);
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
+	 */
 	@Override
 	public void paint(Graphics g) {
 		g.drawImage(image, 0, 0, null);
 		super.paint(g);
 	}
 	
+	/**
+	 * Gets the case tree.
+	 *
+	 * @param funcao the funcao
+	 * @return the case tree
+	 */
 	public Tree<FuncaoCaso> getCaseTree(int funcao){
 		FuncaoCaso fc = fcDao.get(funcao);
 		Tree<FuncaoCaso> arvore = new Tree<FuncaoCaso>(fc);
@@ -63,6 +91,12 @@ public class JPanelFunction extends JPanel {
 		return arvore;
 	}
 	
+	/**
+	 * Search for children.
+	 *
+	 * @param node the node
+	 * @return the list
+	 */
 	private List<Node<FuncaoCaso>> searchForChildren(Node<FuncaoCaso> node){
 		List<Node<FuncaoCaso>> nodeList = new ArrayList<>();
 		if(	node == null ||
@@ -95,6 +129,11 @@ public class JPanelFunction extends JPanel {
 		return nodeList;
 	}
 	
+	/**
+	 * Generate tree.
+	 *
+	 * @param arvore the arvore
+	 */
 	private void generateTree(Tree<FuncaoCaso> arvore){
 		removeAll();
 		
@@ -109,6 +148,13 @@ public class JPanelFunction extends JPanel {
 		repaint();
 	}
 	
+	/**
+	 * Draw nodes.
+	 *
+	 * @param f the f
+	 * @param initialSpaceX the initial space x
+	 * @param levelY the level y
+	 */
 	private void drawNodes(Node<FuncaoCaso> f, int initialSpaceX, int levelY){
 		int circleHeight = block_height;
 		int circleWidth = block_width;
@@ -181,6 +227,11 @@ public class JPanelFunction extends JPanel {
 		repaint();
 	}
 
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {
         JFrame jFrame = new JFrame();
         JPanelFunction panel = new JPanelFunction();

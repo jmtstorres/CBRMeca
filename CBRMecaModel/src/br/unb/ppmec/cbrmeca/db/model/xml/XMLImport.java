@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.db.model.xml;
 
 import java.io.File;
@@ -26,16 +29,33 @@ import br.unb.ppmec.cbrmeca.db.model.dao.ConceitoDAOImpl;
 import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoDAOImpl;
 import br.unb.ppmec.cbrmeca.db.model.dao.ImagemConceitoDAOImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XMLImport.
+ */
 public class XMLImport {
 
+	/** The Constant IMAGE_FOLDER. */
 	public static final String IMAGE_FOLDER = "images" + File.separator
 			+ "concepts" + File.separator;
 	
+	/** The caso. */
 	private Caso caso = null;
+	
+	/** The xml file. */
 	private File fXmlFile = null;
 	
+	/** The level. */
 	private int level = 0;
 
+	/**
+	 * Read from xml.
+	 *
+	 * @param xmlFile the xml file
+	 * @throws ParserConfigurationException the parser configuration exception
+	 * @throws SAXException the SAX exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void readFromXML(String xmlFile) throws ParserConfigurationException, SAXException, IOException {
 		fXmlFile = new File(xmlFile);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -104,6 +124,11 @@ public class XMLImport {
 		}
 	}
 	
+	/**
+	 * N tabs.
+	 *
+	 * @return the string
+	 */
 	private String nTabs(){
 		String tabs = "";
 		for(int i = 0; i < level; i++){
@@ -112,6 +137,14 @@ public class XMLImport {
 		return tabs;
 	}
 
+	/**
+	 * Gets the funcao.
+	 *
+	 * @param nListf the n listf
+	 * @param fpai the fpai
+	 * @param elementar the elementar
+	 * @return the funcao
+	 */
 	private int getFuncao(NodeList nListf, Funcao fpai, boolean elementar) {
 		int idFGeral = 0;
 		level++;
@@ -169,6 +202,12 @@ public class XMLImport {
 		return idFGeral;
 	}
 	
+	/**
+	 * Gets the conceitos.
+	 *
+	 * @param nListC the n list c
+	 * @return the conceitos
+	 */
 	public void getConceitos(NodeList nListC){
 		level++;
 		for (int tempc = 0; tempc < nListC.getLength(); tempc++) {
@@ -178,9 +217,9 @@ public class XMLImport {
 
 				Conceito conceito = new Conceito();
 				conceito.setStrConceito(eElementc
-						.getAttribute("descrição"));
+						.getAttribute("descriï¿½ï¿½o"));
 				conceito.setDescConceito(eElementc
-						.getAttribute("descrição"));
+						.getAttribute("descriï¿½ï¿½o"));
 
 				ImagemConceito img = new ImagemConceito();
 				img.setDirImagemConceito(eElementc
@@ -227,6 +266,11 @@ public class XMLImport {
 		level--;
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		XMLImport xml = new XMLImport();
 		try {

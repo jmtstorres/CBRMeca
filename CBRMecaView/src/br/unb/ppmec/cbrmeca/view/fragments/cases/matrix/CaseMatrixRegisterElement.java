@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.matrix;
 
 import java.awt.BorderLayout;
@@ -37,24 +40,34 @@ import br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.events.ConceptMatrixObse
 import br.unb.ppmec.cbrmeca.view.notification.Notification;
 import br.unb.ppmec.cbrmeca.view.notification.NotificationManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CaseMatrixRegisterElement.
+ */
 public class CaseMatrixRegisterElement extends JFrame {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 5719755019820164327L;
 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The crop image. */
 	private CropImage cropImage = null;
 
+	/** The fc. */
 	private final JFileChooser fc = new JFileChooser();
 
+	/** The date. */
 	private Date date;
 
+	/** The file save name. */
 	private String fileSaveName;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -74,6 +87,8 @@ public class CaseMatrixRegisterElement extends JFrame {
 
 	/**
 	 * Create the frame.
+	 *
+	 * @param parent the parent
 	 */
 	public CaseMatrixRegisterElement(JFrame parent) {
 		setUndecorated(true);
@@ -250,6 +265,13 @@ public class CaseMatrixRegisterElement extends JFrame {
 		lblCancelar.setBackground(Color.GREEN);
 	}
 	
+	/**
+	 * Save default image.
+	 *
+	 * @param element the element
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws Exception the exception
+	 */
 	public void saveDefaultImage(CaseMatrixElement element) throws IOException, Exception{
 		Date date = new Date();
 		String fileSaveName = Long.toString(date.getTime()) + ".jpg";

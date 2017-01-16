@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.components.list.renderers;
 
 import java.awt.Color;
@@ -9,13 +12,18 @@ import javax.swing.ListCellRenderer;
 
 import br.unb.ppmec.cbrmeca.db.model.Palavra;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PalavraCellRenderer.
+ */
 public class PalavraCellRenderer extends JLabel implements ListCellRenderer<Palavra> {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4438086479932955268L;
 
+	/* (non-Javadoc)
+	 * @see javax.swing.ListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object, int, boolean, boolean)
+	 */
 	@Override
 	public Component getListCellRendererComponent(
 			JList<? extends Palavra> list, Palavra value, int index,

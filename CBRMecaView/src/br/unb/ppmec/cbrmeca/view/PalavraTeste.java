@@ -1,10 +1,23 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view;
 
 import br.unb.ppmec.cbrmeca.db.model.Caso;
 import br.unb.ppmec.cbrmeca.db.model.dao.CasoDAOImpl;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PalavraTeste.
+ */
 public class PalavraTeste {
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		PalavraTeste teste = new PalavraTeste();
 		
@@ -19,6 +32,12 @@ public class PalavraTeste {
 		System.out.println(exists.getStrTitulo());
 	}
 	
+	/**
+	 * Rename case.
+	 *
+	 * @param title the title
+	 * @return the string
+	 */
 	private String renameCase(String title){
 		String numberedTitle = null; 
 		int number = getVariationNumber(title);
@@ -33,6 +52,12 @@ public class PalavraTeste {
 		return numberedTitle;
 	}
 	
+	/**
+	 * Gets the variation number.
+	 *
+	 * @param title the title
+	 * @return the variation number
+	 */
 	private int getVariationNumber(String title){
 		int number = 1;
 		

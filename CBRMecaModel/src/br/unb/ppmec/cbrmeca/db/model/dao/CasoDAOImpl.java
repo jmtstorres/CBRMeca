@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.db.model.dao;
 
 import java.util.List;
@@ -11,12 +14,22 @@ import br.unb.ppmec.cbrmeca.db.model.Caso;
 import br.unb.ppmec.cbrmeca.model.interfaces.DaoBase;
 import br.unb.ppmec.cbrmeca.model.interfaces.ICasoDAO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CasoDAOImpl.
+ */
 public class CasoDAOImpl extends DaoBase<Caso> implements ICasoDAO{
 	
+	/**
+	 * Instantiates a new caso dao impl.
+	 */
 	public CasoDAOImpl() {
 		setSession(HibernateUtil.getSessionFactory());
 	}
 	
+	/* (non-Javadoc)
+	 * @see br.unb.ppmec.cbrmeca.model.interfaces.ICasoDAO#getStartedWith(java.lang.String)
+	 */
 	@Override
 	public List<Caso> getStartedWith(String pattern) {
 		Criterion criterion1 = Restrictions.ilike("strTitulo", pattern, MatchMode.ANYWHERE);
@@ -25,6 +38,9 @@ public class CasoDAOImpl extends DaoBase<Caso> implements ICasoDAO{
 		return getListByCriterion(criterion3);
 	}
 	
+	/* (non-Javadoc)
+	 * @see br.unb.ppmec.cbrmeca.model.interfaces.ICasoDAO#getExactTitle(java.lang.String)
+	 */
 	@Override
 	public Caso getExactTitle(String pattern) {
 		Criterion criterion1 = Restrictions.ilike("strTitulo", pattern, MatchMode.EXACT);
@@ -37,6 +53,9 @@ public class CasoDAOImpl extends DaoBase<Caso> implements ICasoDAO{
 		return list.get(0);
 	}
 
+	/* (non-Javadoc)
+	 * @see br.unb.ppmec.cbrmeca.model.interfaces.ICasoDAO#getByIDFuncaoCasoRaiz(int)
+	 */
 	@Override
 	public Caso getByIDFuncaoCasoRaiz(int id) {
 		Criterion criterion1 = Restrictions.eq("idFuncaoGeral", id);

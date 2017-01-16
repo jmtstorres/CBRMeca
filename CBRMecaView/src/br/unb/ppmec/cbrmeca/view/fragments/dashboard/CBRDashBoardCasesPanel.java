@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.dashboard;
 
 import java.awt.BorderLayout;
@@ -19,11 +22,13 @@ import br.unb.ppmec.cbrmeca.db.model.dao.ConceitoDAOImpl;
 import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoDAOImpl;
 import br.unb.ppmec.cbrmeca.db.model.dao.PalavraDAOImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CBRDashBoardCasesPanel.
+ */
 public class CBRDashBoardCasesPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7106078291303068980L;
 
 	/**

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.matrix;
 
 import java.awt.BorderLayout;
@@ -12,15 +15,19 @@ import javax.swing.JPanel;
 import br.unb.ppmec.cbrmeca.db.model.Conceito;
 import br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.vo.FuncaoMatrizVO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CasesMatrixPanel.
+ */
 public class CasesMatrixPanel extends JPanel {
 
+	/** The list. */
 	private List<CasesMatrixRow> list = null;
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4534025550144186364L;
 
+	/** The panel_matrix. */
 	private JPanel panel_matrix;
 
 	/**
@@ -31,6 +38,9 @@ public class CasesMatrixPanel extends JPanel {
 		initialize();
 	}
 
+	/**
+	 * Initialize.
+	 */
 	private void initialize() {
 		setLayout(new BorderLayout(0, 0));
 		panel_matrix = new JPanel();
@@ -44,6 +54,11 @@ public class CasesMatrixPanel extends JPanel {
 		panel_matrix.setLayout(gbl_panel_matrix);
 	}
 
+	/**
+	 * Adds the function.
+	 *
+	 * @param funcao the funcao
+	 */
 	public void addFunction(FuncaoMatrizVO funcao) {
 		
 		if (list == null) {
@@ -83,6 +98,12 @@ public class CasesMatrixPanel extends JPanel {
 		repaint();
 	}
 
+	/**
+	 * Check existing.
+	 *
+	 * @param funcao the funcao
+	 * @return true, if successful
+	 */
 	private boolean checkExisting(FuncaoMatrizVO funcao) {
 		for(CasesMatrixRow row : list){
 			if(row.getFuncao().equals(funcao.getFuncao())){
@@ -92,6 +113,11 @@ public class CasesMatrixPanel extends JPanel {
 		return false;
 	}
 
+	/**
+	 * Sets the functions.
+	 *
+	 * @param list2 the new functions
+	 */
 	public void setFunctions(List<FuncaoMatrizVO> list2) {
 		if (list == null) {
 			list = new ArrayList<CasesMatrixRow>();
@@ -139,6 +165,9 @@ public class CasesMatrixPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * Clear all.
+	 */
 	public void clearAll(){
 		if(list != null){
 			list.clear();
@@ -146,10 +175,20 @@ public class CasesMatrixPanel extends JPanel {
 		panel_matrix.removeAll();
 	}
 	
+	/**
+	 * Gets the list.
+	 *
+	 * @return the list
+	 */
 	public List<CasesMatrixRow> getList(){
 		return this.list;
 	}
 	
+	/**
+	 * Show buttons.
+	 *
+	 * @param show the show
+	 */
 	public void showButtons(boolean show){
 		for(CasesMatrixRow row : list){
 			row.showButtons(show);

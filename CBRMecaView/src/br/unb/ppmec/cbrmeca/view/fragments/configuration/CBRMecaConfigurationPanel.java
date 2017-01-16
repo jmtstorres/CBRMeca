@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.configuration;
 
 import java.awt.Color;
@@ -24,18 +27,30 @@ import javax.swing.SwingConstants;
 
 import br.unb.ppmec.cbrmeca.view.util.io.PropertiesIO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CBRMecaConfigurationPanel.
+ */
 public class CBRMecaConfigurationPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -8562037625706065684L;
+	
+	/** The text field path model. */
 	private JTextField textFieldPathModel;
 
+	/** The chckbx new check box. */
 	private JCheckBox chckbxNewCheckBox;
+	
+	/** The lbl modelo gramatical. */
 	private JLabel lblModeloGramatical;
+	
+	/** The btn new button. */
 	private JButton btnNewButton;
+	
 	/**
+	 * The text field.
+	 *
 	 * @wbp.nonvisual location=-7,-31
 	 */
 	private final JTextField textField = new JTextField();
@@ -144,6 +159,9 @@ public class CBRMecaConfigurationPanel extends JPanel {
 		loadConfig();
 	}
 
+	/**
+	 * Load config.
+	 */
 	protected void loadConfig() {
 		Properties prop = new Properties();
 
@@ -165,6 +183,9 @@ public class CBRMecaConfigurationPanel extends JPanel {
 		textFieldPathModel.setText(prop.getProperty(PropertiesIO.MODEL_PATH));
 	}
 
+	/**
+	 * Update config.
+	 */
 	protected void updateConfig() {
 		Properties prop = new Properties();
 

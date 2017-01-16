@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view;
 
 import java.awt.BorderLayout;
@@ -24,19 +27,37 @@ import br.unb.ppmec.cbrmeca.view.navigation.CBRMecaMenu;
 import br.unb.ppmec.cbrmeca.view.splash.SplashScreen;
 import br.unb.ppmec.cbrmeca.view.util.io.PropertiesIO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CBRMecaMain.
+ */
 public class CBRMecaMain {
 
+	/** The frame. */
 	private JFrame frame;
+	
+	/** The active panel. */
 	private JPanel activePanel;
+	
+	/** The panel main. */
 	private JPanel panelMain;
+	
+	/** The panel. */
 	private JPanel panel;
+	
+	/** The lbl new label. */
 	private JLabel lblNewLabel;
 	
+	/** The uses model. */
 	private boolean usesModel = false;
+	
+	/** The model path. */
 	private String modelPath = "";
 	
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -74,14 +95,27 @@ public class CBRMecaMain {
 		});
 	}
 	
+	/**
+	 * Uses model.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean usesModel() {
 		return usesModel;
 	}
 
+	/**
+	 * Gets the model path.
+	 *
+	 * @return the model path
+	 */
 	public String getModelPath() {
 		return modelPath;
 	}
 
+	/**
+	 * Load config.
+	 */
 	protected void loadConfig() {
 		Properties prop = new Properties();
 
@@ -100,10 +134,11 @@ public class CBRMecaMain {
 
 	/**
 	 * Create the application.
-	 * @throws UnsupportedLookAndFeelException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 * @throws ClassNotFoundException 
+	 *
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws InstantiationException the instantiation exception
+	 * @throws IllegalAccessException the illegal access exception
+	 * @throws UnsupportedLookAndFeelException the unsupported look and feel exception
 	 */
 	public CBRMecaMain() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		loadConfig();
@@ -112,10 +147,11 @@ public class CBRMecaMain {
 
 	/**
 	 * Initialize the contents of the frame.
-	 * @throws UnsupportedLookAndFeelException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 * @throws ClassNotFoundException 
+	 *
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws InstantiationException the instantiation exception
+	 * @throws IllegalAccessException the illegal access exception
+	 * @throws UnsupportedLookAndFeelException the unsupported look and feel exception
 	 */
 	private void initialize() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		UIManager
@@ -217,6 +253,11 @@ public class CBRMecaMain {
 		});
 	}
 	
+	/**
+	 * Checks if is editing.
+	 *
+	 * @return true, if is editing
+	 */
 	private boolean isEditing(){
 		if(activePanel instanceof CBRMecaCasesPanel){
 			return ((CBRMecaCasesPanel)activePanel).isEditing();

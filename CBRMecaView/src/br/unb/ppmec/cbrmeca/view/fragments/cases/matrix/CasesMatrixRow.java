@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.matrix;
 
 import java.awt.BorderLayout;
@@ -32,30 +35,50 @@ import br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.vo.FuncaoMatrizVO;
 import br.unb.ppmec.cbrmeca.view.notification.Notification;
 import br.unb.ppmec.cbrmeca.view.notification.NotificationManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CasesMatrixRow.
+ */
 public class CasesMatrixRow extends JPanel implements
 		MatrixConceptAddedListener {
 
+	/** The columns. */
 	private int columns = 1;
 
+	/** The funcao. */
 	private FuncaoMatrizVO funcao;
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4534025550144186364L;
 
+	/** The Constant MAX_COLUMNS. */
 	private static final int MAX_COLUMNS = 12;
 
+	/** The label. */
 	private JLabel label;
+	
+	/** The panel_matrix. */
 	private JPanel panel_matrix;
+	
+	/** The elementos. */
 	private List<CaseMatrixElement> elementos = null;
+	
+	/** The btn adicionar conceito. */
 	private JButton btnAdicionarConceito;
+	
+	/** The btn sugestes de conceitos. */
 	private JButton btnSugestesDeConceitos;
+	
+	/** The cmse. */
 	private CaseMatrixSelectElement cmse = null;
+	
+	/** The editable. */
 	private boolean editable = true;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param editable the editable
 	 */
 	public CasesMatrixRow(boolean editable) {
 		setBackground(Color.WHITE);
@@ -176,14 +199,25 @@ public class CasesMatrixRow extends JPanel implements
 		});
 	}
 
+	/**
+	 * Adds the this as listener.
+	 */
 	private void addThisAsListener() {
 		ConceptMatrixObserver.getInstance().addConceptAddedListener(this);
 	}
 
+	/**
+	 * Removes the this from listeners.
+	 */
 	private void removeThisFromListeners() {
 		ConceptMatrixObserver.getInstance().removeConceptAddedListener(this);
 	}
 
+	/**
+	 * Sets the function.
+	 *
+	 * @param funcao the new function
+	 */
 	public void setFunction(FuncaoMatrizVO funcao) {
 		this.funcao = funcao;
 		label.setText(funcao.getFuncao());
@@ -191,14 +225,27 @@ public class CasesMatrixRow extends JPanel implements
 		repaint();
 	}
 
+	/**
+	 * Gets the funcao.
+	 *
+	 * @return the funcao
+	 */
 	public FuncaoMatrizVO getFuncao() {
 		return funcao;
 	}
 
+	/**
+	 * Gets the list.
+	 *
+	 * @return the list
+	 */
 	public List<CaseMatrixElement> getList() {
 		return this.elementos;
 	}
 
+	/* (non-Javadoc)
+	 * @see br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.events.MatrixConceptAddedListener#conceptAdded(br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.events.ConceptAddedEvent)
+	 */
 	@Override
 	public void conceptAdded(ConceptAddedEvent event) {
 		new java.util.Timer().schedule(new java.util.TimerTask() {
@@ -224,6 +271,11 @@ public class CasesMatrixRow extends JPanel implements
 		}
 	}
 
+	/**
+	 * Adds the element.
+	 *
+	 * @param conceito the conceito
+	 */
 	public void addElement(Conceito conceito) {
 
 		System.out.println("Adicionou " + columns);
@@ -315,6 +367,11 @@ public class CasesMatrixRow extends JPanel implements
 		panel_matrix.repaint();
 	}
 
+	/**
+	 * Show buttons.
+	 *
+	 * @param show the show
+	 */
 	public void showButtons(boolean show) {
 		btnAdicionarConceito.setVisible(show);
 		btnSugestesDeConceitos.setVisible(show);

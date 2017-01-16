@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.util.io;
 
 import java.io.File;
@@ -7,11 +10,24 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PropertiesIO.
+ */
 public class PropertiesIO {
 	
+	/** The Constant MODEL_USED. */
 	public static final String MODEL_USED = "model.used";
+	
+	/** The Constant MODEL_PATH. */
 	public static final String MODEL_PATH = "model.path";
 	
+	/**
+	 * Store props.
+	 *
+	 * @param prop the prop
+	 * @param f the f
+	 */
 	public static void storeProps(Properties prop, File f){
 		FileOutputStream fos = null;
 		try {
@@ -32,6 +48,12 @@ public class PropertiesIO {
 		}
 	}
 	
+	/**
+	 * Load props.
+	 *
+	 * @param prop the prop
+	 * @param f the f
+	 */
 	public static void loadProps(Properties prop, File f){
 		FileInputStream input = null;
 		try {

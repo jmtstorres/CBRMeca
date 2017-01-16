@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.db.hibernate;
 
 import org.hibernate.SessionFactory;
@@ -5,7 +8,13 @@ import org.hibernate.cfg.Configuration;
 
 import com.sun.media.jfxmedia.logging.Logger;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HibernateUtil.
+ */
 public class HibernateUtil {
+	
+	/** The session factory. */
 	private static SessionFactory sessionFactory;
 
 	static {
@@ -17,6 +26,11 @@ public class HibernateUtil {
 		}
 	}
 
+	/**
+	 * Gets the session factory.
+	 *
+	 * @return the session factory
+	 */
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}

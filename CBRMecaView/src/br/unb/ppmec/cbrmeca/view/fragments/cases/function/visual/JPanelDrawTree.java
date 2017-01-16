@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.function.visual;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -17,25 +20,44 @@ import br.unb.ppmec.cbrmeca.db.model.FuncaoCaso;
 import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoCasoDAOImpl;
 import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoDAOImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPanelDrawTree.
+ */
 public class JPanelDrawTree extends JPanel {
+	
+	/**
+	 * Instantiates a new j panel draw tree.
+	 */
 	public JPanelDrawTree() {
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout(0, 0));
 		
 	}
 
-    /**
-	 * 
-	 */
+    /** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The fc dao. */
 	private FuncaoCasoDAOImpl fcDao = new FuncaoCasoDAOImpl();
+	
+	/** The dao. */
 	private FuncaoDAOImpl fDao = new FuncaoDAOImpl();
 	
+	/** The block_width. */
 	private int block_width = 120;
 	
+	/** The dim. */
 	private Dimension dim = new Dimension(1, 1);
+	
+	/** The arvore. */
 	private Tree<FuncaoCaso> arvore;
 
+	/**
+	 * Sets the case id.
+	 *
+	 * @param caseID the new case id
+	 */
 	public void setCaseID(int caseID) {
 		arvore = getCaseTree(caseID);
 		//repaint();
@@ -46,6 +68,9 @@ public class JPanelDrawTree extends JPanel {
 		setMaximumSize(dim);
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
+	 */
 	@Override
     public void paint(Graphics g) {
 		if(arvore != null){
@@ -53,6 +78,12 @@ public class JPanelDrawTree extends JPanel {
 		}
     }
 	
+	/**
+	 * Gets the case tree.
+	 *
+	 * @param funcao the funcao
+	 * @return the case tree
+	 */
 	public Tree<FuncaoCaso> getCaseTree(int funcao){
 		FuncaoCaso fc = fcDao.get(funcao);
 		Tree<FuncaoCaso> arvore = new Tree<FuncaoCaso>(fc);
@@ -66,6 +97,12 @@ public class JPanelDrawTree extends JPanel {
 		return arvore;
 	}
 	
+	/**
+	 * Search for children.
+	 *
+	 * @param node the node
+	 * @return the list
+	 */
 	private List<Node<FuncaoCaso>> searchForChildren(Node<FuncaoCaso> node){
 		List<Node<FuncaoCaso>> nodeList = new ArrayList<>();
 		if(	node == null ||
@@ -98,11 +135,25 @@ public class JPanelDrawTree extends JPanel {
 		return nodeList;
 	}
 	
+	/**
+	 * Prints the tree.
+	 *
+	 * @param arvore the arvore
+	 * @param g the g
+	 */
 	private void printTree(Tree<FuncaoCaso> arvore, Graphics g){
 		printNodes(arvore.getRoot(), 0, 1, g);
 		setBounds(0,0, arvore.getRoot().getSpaces()*block_width, getHeight());
 	}
 	
+	/**
+	 * Prints the nodes.
+	 *
+	 * @param f the f
+	 * @param initialSpaceX the initial space x
+	 * @param levelY the level y
+	 * @param g the g
+	 */
 	private void printNodes(Node<FuncaoCaso> f, int initialSpaceX, int levelY, Graphics g){
 		int circleHeight = block_width;
 		int circleWidth = block_width;
@@ -212,6 +263,11 @@ public class JPanelDrawTree extends JPanel {
 		}
 	}
 
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {
         JFrame jFrame = new JFrame();
         JPanelDrawTree panel = new JPanelDrawTree();

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.matrix;
 
 import java.awt.Color;
@@ -20,29 +23,51 @@ import javax.swing.border.LineBorder;
 import org.jsoup.Jsoup;
 import javax.swing.JPanel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CaseMatrixElement.
+ */
 public class CaseMatrixElement extends JLayeredPane{
-	/**
-	 * 
-	 */
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -2118724261987316216L;
 	
+	/** The Constant IMAGE_FOLDER. */
 	public static final String IMAGE_FOLDER = "images" + File.separator + "concepts" + File.separator;
 	
+	/** The img path. */
 	private String imgPath;
+	
+	/** The img name. */
 	private String imgName;
+	
+	/** The concept id. */
 	private Integer conceptID = 0;
 
+	/** The lbl image. */
 	private JLabel lblImage;
+	
+	/** The txt descrio. */
 	private JTextPane txtDescrio;
+	
+	/** The text. */
 	private String text;
 	
+	/** The cleared. */
 	private boolean cleared = false;
+	
+	/** The close enabled. */
 	private boolean closeEnabled = false;
 
+	/** The lbl close. */
 	private JLabel lblClose;
 
+	/** The edit. */
 	private boolean edit;
 
+	/**
+	 * Instantiates a new case matrix element.
+	 */
 	public CaseMatrixElement() {
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(150, 150));
@@ -51,6 +76,9 @@ public class CaseMatrixElement extends JLayeredPane{
 		initialize();
 	}
 
+	/**
+	 * Initialize.
+	 */
 	private void initialize(){
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		
@@ -127,6 +155,11 @@ public class CaseMatrixElement extends JLayeredPane{
 		add(panel);
 	}
 	
+	/**
+	 * Sets the initial image.
+	 *
+	 * @param imageName the new initial image
+	 */
 	public void setInitialImage(String imageName){
 		this.imgName = imageName;
 		this.imgPath = System.getProperty("user.dir") + File.separator + imageName;
@@ -135,6 +168,11 @@ public class CaseMatrixElement extends JLayeredPane{
 		repaint();
 	}
 	
+	/**
+	 * Sets the image.
+	 *
+	 * @param imageName the new image
+	 */
 	public void setImage(String imageName){
 		this.imgName = imageName;
 		this.imgPath = IMAGE_FOLDER + imageName;
@@ -144,54 +182,114 @@ public class CaseMatrixElement extends JLayeredPane{
 		repaint();
 	}
 	
+	/**
+	 * Sets the subtitle.
+	 *
+	 * @param text the new subtitle
+	 */
 	public void setSubtitle(String text){
 		this.text = text;
 		this.txtDescrio.setText("<center>" + text + "</center>");
 	}
 
+	/**
+	 * Gets the img path.
+	 *
+	 * @return the img path
+	 */
 	public String getImgPath() {
 		return imgPath;
 	}
 	
+	/**
+	 * Gets the img name.
+	 *
+	 * @return the img name
+	 */
 	public String getImgName() {
 		return imgName;
 	}
 
+	/**
+	 * Gets the text.
+	 *
+	 * @return the text
+	 */
 	public String getText() {
 		return Jsoup.parse(this.text).text();
 	}
 	
+	/**
+	 * Sets the image click listener.
+	 *
+	 * @param listener the new image click listener
+	 */
 	public void setImageClickListener(MouseListener listener){
 		this.lblImage.addMouseListener(listener);
 	}
 	
+	/**
+	 * Sets the lbl close click listener.
+	 *
+	 * @param listener the new lbl close click listener
+	 */
 	public void setLblCloseClickListener(MouseListener listener){
 		this.lblClose.addMouseListener(listener);
 		this.closeEnabled = true;
 	}
 
+	/**
+	 * Gets the concept id.
+	 *
+	 * @return the concept id
+	 */
 	public Integer getConceptID() {
 		return conceptID;
 	}
 
+	/**
+	 * Checks if is close enabled.
+	 *
+	 * @return true, if is close enabled
+	 */
 	public boolean isCloseEnabled() {
 		return closeEnabled;
 	}
 
+	/**
+	 * Sets the close enabled.
+	 *
+	 * @param closeEnabled the new close enabled
+	 */
 	public void setCloseEnabled(boolean closeEnabled) {
 		this.closeEnabled = closeEnabled;
 	}
 
+	/**
+	 * Sets the concept id.
+	 *
+	 * @param conceptID the new concept id
+	 */
 	public void setConceptID(Integer conceptID) {
 		this.conceptID = conceptID;
 	}
 	
+	/**
+	 * Sets the editable.
+	 *
+	 * @param edit the new editable
+	 */
 	public void setEditable(boolean edit){
 		this.edit = edit;
 		this.txtDescrio.setEditable(edit);
 		this.lblClose.setVisible(edit);
 	}
 
+	/**
+	 * Hover action.
+	 *
+	 * @param inside the inside
+	 */
 	public void hoverAction(boolean inside) {
 		if(closeEnabled){
 			this.lblClose.setVisible(inside);

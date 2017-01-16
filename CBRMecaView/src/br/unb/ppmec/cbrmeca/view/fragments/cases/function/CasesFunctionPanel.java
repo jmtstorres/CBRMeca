@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.function;
 
 import java.awt.BasicStroke;
@@ -44,54 +47,107 @@ import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoDAOImpl;
 import br.unb.ppmec.cbrmeca.view.components.autocomplete.AutoComboBox;
 import br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.vo.FuncaoMatrizVO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CasesFunctionPanel.
+ */
 public class CasesFunctionPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 5204293685056545405L;
 
+	/** The Constant MAX_LEVELS. */
 	private static final int MAX_LEVELS = 7;
 
+	/** The level. */
 	private int level = 0;
 
+	/** The text field. */
 	private AutoComboBox textField;
 
+	/** The panel_new. */
 	private JPanel panel_new;
 
+	/** The children. */
 	private List<CasesFunctionPanel> children;
 
+	/** The btn_add. */
 	private JButton btn_add;
+	
+	/** The btn_remove. */
 	private JButton btn_remove;
+	
+	/** The lbl separator. */
 	private PaintedLabel lblSeparator;
+	
+	/** The chckbx new check box. */
 	private JCheckBox chckbxNewCheckBox;
+	
+	/** The panel_1. */
 	private JPanel panel_1;
 
+	/** The panel text. */
 	private JPanel panelText;
 
+	/** The parent. */
 	private CasesFunctionPanel parent = null;
+	
+	/** The panel_2. */
 	private JPanel panel_2;
+	
+	/** The layered pane. */
 	private JLayeredPane layeredPane;
+	
+	/** The lbl alerta. */
 	private JLabel lblAlerta;
+	
+	/** The panel_3. */
 	private JPanel panel_3;
+	
+	/** The btn information. */
 	private JButton btnInformation;
+	
+	/** The btn mechanics. */
 	private JButton btnMechanics;
+	
+	/** The btn control. */
 	private JButton btnControl;
+	
+	/** The btn power. */
 	private JButton btnPower;
+	
+	/** The c box efeito. */
 	private JComboBox<EFunctionEffect> cBoxEfeito;
+	
+	/** The c box necessidade. */
 	private JComboBox<EFunctionNecessity> cBoxNecessidade;
+	
+	/** The c box tipo. */
 	private JComboBox<EFunctionType> cBoxTipo;
 
+	/** The escopo. */
 	private int escopo = 0;
+	
+	/** The tipo funcao. */
 	private int tipoFuncao = 0;
+	
+	/** The tipo efeito. */
 	private int tipoEfeito = 0;
+	
+	/** The tipo necessidade. */
 	private int tipoNecessidade = 0;
+	
+	/** The id tipo caso. */
 	private int idTipoCaso = 0;
 
+	/** The filled ok. */
 	private boolean filledOK;
 
 	/**
 	 * Create the panelText.
+	 *
+	 * @param parent the parent
+	 * @param level the level
 	 */
 	public CasesFunctionPanel(CasesFunctionPanel parent, int level) {
 		setMinimumSize(new Dimension(150, 50));
@@ -465,6 +521,12 @@ public class CasesFunctionPanel extends JPanel {
 		checkOK();
 	}
 
+	/**
+	 * Paint function scope.
+	 *
+	 * @param button the button
+	 * @param scopeID the scope id
+	 */
 	private void paintFunctionScope(JButton button, int scopeID) {
 		if ((this.escopo & scopeID) == scopeID) {
 			button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
@@ -473,6 +535,12 @@ public class CasesFunctionPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Update function scope.
+	 *
+	 * @param button the button
+	 * @param scope the scope
+	 */
 	protected void updateFunctionScope(JButton button, EFunctionScope scope) {
 		int escopoAtual = this.escopo;
 
@@ -487,10 +555,18 @@ public class CasesFunctionPanel extends JPanel {
 		checkOK();
 	}
 
+	/**
+	 * Checks if is filled ok.
+	 *
+	 * @return true, if is filled ok
+	 */
 	public boolean isFilledOK() {
 		return filledOK;
 	}
 
+	/**
+	 * Check ok.
+	 */
 	private void checkOK() {
 
 		if (this.tipoEfeito != 0 && 
@@ -526,16 +602,27 @@ public class CasesFunctionPanel extends JPanel {
 		repaint();
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
+	 */
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		repaintImage();
 	}
 
+	/**
+	 * Sets the parent.
+	 *
+	 * @param parent the new parent
+	 */
 	public void setParent(CasesFunctionPanel parent) {
 		this.parent = parent;
 	}
 
+	/**
+	 * Repaint image.
+	 */
 	public void repaintImage() {
 		if (parent != null) {
 			parent.repaintImage();
@@ -545,10 +632,20 @@ public class CasesFunctionPanel extends JPanel {
 		lblSeparator.repaint();
 	}
 
+	/**
+	 * Gets the text panel position.
+	 *
+	 * @return the text panel position
+	 */
 	public int getTextPanelPosition() {
 		return (int) panelText.getBounds().getCenterX() + 130;
 	}
 
+	/**
+	 * Gets the connection.
+	 *
+	 * @return the connection
+	 */
 	private BufferedImage getConnection() {
 		BufferedImage image = (BufferedImage) new BufferedImage(
 				getWidth() + 10, getHeight() + 10, BufferedImage.TYPE_INT_ARGB);
@@ -578,6 +675,11 @@ public class CasesFunctionPanel extends JPanel {
 		return image;
 	}
 
+	/**
+	 * Sets the id tipo caso.
+	 *
+	 * @param idTipoCaso the new id tipo caso
+	 */
 	public void setIdTipoCaso(int idTipoCaso) {
 		this.idTipoCaso = idTipoCaso;
 		for(CasesFunctionPanel child : children){
@@ -585,6 +687,11 @@ public class CasesFunctionPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Gets the elementar level functions.
+	 *
+	 * @return the elementar level functions
+	 */
 	public List<FuncaoMatrizVO> getElementarLevelFunctions() {
 		List<FuncaoMatrizVO> list = new ArrayList<FuncaoMatrizVO>();
 
@@ -602,6 +709,12 @@ public class CasesFunctionPanel extends JPanel {
 		return list;
 	}
 
+	/**
+	 * Gets the level functions.
+	 *
+	 * @param level the level
+	 * @return the level functions
+	 */
 	public List<String> getLevelFunctions(int level) {
 		List<String> list = new ArrayList<String>();
 
@@ -621,6 +734,9 @@ public class CasesFunctionPanel extends JPanel {
 		return list;
 	}
 
+	/**
+	 * Initialize.
+	 */
 	private void initialize() {
 		setBackground(Color.WHITE);
 
@@ -634,6 +750,11 @@ public class CasesFunctionPanel extends JPanel {
 		setLayout(gridBagLayout);
 	}
 
+	/**
+	 * Adds the child.
+	 *
+	 * @param panel the panel
+	 */
 	public void addChild(CasesFunctionPanel panel) {
 		children.add(panel);
 		
@@ -653,6 +774,11 @@ public class CasesFunctionPanel extends JPanel {
 		repaint();
 	}
 
+	/**
+	 * Removes the child.
+	 *
+	 * @param panel the panel
+	 */
 	public void removeChild(CasesFunctionPanel panel) {
 		children.remove(panel);
 		panel_new.remove(panel);
@@ -663,6 +789,9 @@ public class CasesFunctionPanel extends JPanel {
 		repaint();
 	}
 
+	/**
+	 * Clear all.
+	 */
 	public void clearAll() {
 		panel_new.removeAll();
 		textField.setText("");
@@ -672,18 +801,38 @@ public class CasesFunctionPanel extends JPanel {
 		repaint();
 	}
 
+	/**
+	 * Gets the children.
+	 *
+	 * @return the children
+	 */
 	public List<CasesFunctionPanel> getChildren() {
 		return this.children;
 	}
 
+	/**
+	 * Gets the function string.
+	 *
+	 * @return the function string
+	 */
 	public String getFunctionString() {
 		return this.textField.getText();
 	}
 
+	/**
+	 * Gets the me.
+	 *
+	 * @return the me
+	 */
 	public CasesFunctionPanel getMe() {
 		return this;
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		frame.setBounds(100, 100, 1024, 768);
@@ -713,6 +862,11 @@ public class CasesFunctionPanel extends JPanel {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * Load from case.
+	 *
+	 * @param caso the caso
+	 */
 	public void loadFromCase(Caso caso){
 		FuncaoCasoDAOImpl fcDAO = new FuncaoCasoDAOImpl();
 		FuncaoDAOImpl fDAO = new FuncaoDAOImpl();
@@ -724,6 +878,11 @@ public class CasesFunctionPanel extends JPanel {
 		addChildren(list);
 	}
 	
+	/**
+	 * Adds the children.
+	 *
+	 * @param list the list
+	 */
 	public void addChildren(List<FuncaoCaso> list){
 		for(FuncaoCaso fc : list){
 			FuncaoDAOImpl fDAO = new FuncaoDAOImpl();
@@ -754,6 +913,11 @@ public class CasesFunctionPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Sets the tipo escopo.
+	 *
+	 * @param tipoEscopo the new tipo escopo
+	 */
 	private void setTipoEscopo(Integer tipoEscopo) {
 		for(EFunctionScope scope : EFunctionScope.values()){
 			if(EFunctionScope.CONTROL == scope){
@@ -768,30 +932,63 @@ public class CasesFunctionPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Sets the tipo necessidade.
+	 *
+	 * @param tipoNecessidade2 the new tipo necessidade
+	 */
 	private void setTipoNecessidade(Integer tipoNecessidade2) {
 		this.cBoxNecessidade.setSelectedIndex(tipoNecessidade2);
 	}
 
+	/**
+	 * Sets the tipo funcao.
+	 *
+	 * @param tipoFuncao2 the new tipo funcao
+	 */
 	private void setTipoFuncao(Integer tipoFuncao2) {
 		this.cBoxTipo.setSelectedIndex(tipoFuncao2);
 	}
 
+	/**
+	 * Sets the efeito.
+	 *
+	 * @param tipoEfeito2 the new efeito
+	 */
 	private void setEfeito(Integer tipoEfeito2) {
 		this.cBoxEfeito.setSelectedIndex(tipoEfeito);
 	}
 
+	/**
+	 * Sets the elementar.
+	 *
+	 * @param bolElementar the new elementar
+	 */
 	private void setElementar(boolean bolElementar) {
 		this.chckbxNewCheckBox.setSelected(bolElementar);
 	}
 
+	/**
+	 * Sets the text.
+	 *
+	 * @param string the new text
+	 */
 	private void setText(String string) {
 		this.textField.setText(string);
 	}
 
+	/**
+	 * Checks if is elementar.
+	 *
+	 * @return true, if is elementar
+	 */
 	public boolean isElementar() {
 		return chckbxNewCheckBox.isSelected();
 	}
 
+	/**
+	 * Inits the combo.
+	 */
 	private void initCombo() {
 		for (EFunctionType type : EFunctionType.values()) {
 			cBoxTipo.addItem(type);
@@ -849,18 +1046,38 @@ public class CasesFunctionPanel extends JPanel {
 		});
 	}
 
+	/**
+	 * Gets the escopo.
+	 *
+	 * @return the escopo
+	 */
 	public int getEscopo() {
 		return escopo;
 	}
 
+	/**
+	 * Gets the tipo funcao.
+	 *
+	 * @return the tipo funcao
+	 */
 	public int getTipoFuncao() {
 		return tipoFuncao;
 	}
 
+	/**
+	 * Gets the tipo efeito.
+	 *
+	 * @return the tipo efeito
+	 */
 	public int getTipoEfeito() {
 		return tipoEfeito;
 	}
 
+	/**
+	 * Gets the tipo necessidade.
+	 *
+	 * @return the tipo necessidade
+	 */
 	public int getTipoNecessidade() {
 		return tipoNecessidade;
 	}

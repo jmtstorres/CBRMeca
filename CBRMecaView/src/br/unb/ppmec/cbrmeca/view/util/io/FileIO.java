@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.util.io;
 
 import java.awt.image.BufferedImage;
@@ -38,20 +41,47 @@ import br.unb.ppmec.cbrmeca.xml.vo.FuncaoVO;
 import br.unb.ppmec.cbrmeca.xml.vo.ImagemConceitoVO;
 import br.unb.ppmec.cbrmeca.xml.vo.SolucaoVO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FileIO.
+ */
 public class FileIO {
 	
+	/** The caso dao. */
 	private static CasoDAOImpl casoDAO = new CasoDAOImpl();
+	
+	/** The fc dao. */
 	private static FuncaoCasoDAOImpl fcDAO = new FuncaoCasoDAOImpl();
+	
+	/** The dao. */
 	private static FuncaoDAOImpl fDAO = new FuncaoDAOImpl();
+	
+	/** The s dao. */
 	private static SolucaoDAOImpl sDAO = new SolucaoDAOImpl();
+	
+	/** The c dao. */
 	private static ConceitoDAOImpl cDAO = new ConceitoDAOImpl();
+	
+	/** The img dao. */
 	private static ImagemConceitoDAOImpl imgDAO = new ImagemConceitoDAOImpl();
 	
+	/** The imgs to copy. */
 	private static List<String> imgsToCopy = new ArrayList<String>();
+	
+	/** The solucoes. */
 	private static HashMap<FuncaoCaso, List<SolucaoVO>> solucoes = new HashMap<FuncaoCaso,List<SolucaoVO>>();
 	
+	/** The id caso. */
 	private static int idCaso = 0;
 
+	/**
+	 * Write to disk.
+	 *
+	 * @param caso the caso
+	 * @param path the path
+	 * @throws JAXBException the JAXB exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void writeToDisk(CasoVO caso, String path) throws JAXBException, IOException{
         JAXBContext context = JAXBContext.newInstance(CasoVO.class);
         Marshaller m = context.createMarshaller();
@@ -68,6 +98,14 @@ public class FileIO {
         fos.close();
 	}
 	
+	/**
+	 * Load from disk.
+	 *
+	 * @param filename the filename
+	 * @return the caso vo
+	 * @throws JAXBException the JAXB exception
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	private static CasoVO loadFromDisk(String filename) throws JAXBException, FileNotFoundException {
 		JAXBContext context = JAXBContext.newInstance(CasoVO.class);
 		Unmarshaller um = context.createUnmarshaller();
@@ -75,6 +113,14 @@ public class FileIO {
 		return caso;
 	}
 	
+	/**
+	 * Save case on xml file.
+	 *
+	 * @param caso the caso
+	 * @param path the path
+	 * @throws JAXBException the JAXB exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void saveCaseOnXMLFile(Caso caso, String path) throws JAXBException, IOException{
 		idCaso = caso.getIdCaso();
 		
@@ -94,6 +140,12 @@ public class FileIO {
 		writeToDisk(casoVO, path);
 	}
 	
+	/**
+	 * Gets the funcao vo tree.
+	 *
+	 * @param funcaoPai the funcao pai
+	 * @return the funcao vo tree
+	 */
 	private static List<FuncaoCasoVO> getFuncaoVOTree(FuncaoCaso funcaoPai){
 		List<FuncaoCaso> children = fcDAO.getByIdFuncaoPai(funcaoPai.getIdFuncaoCaso());
 		List<FuncaoCasoVO> childrenVO = new ArrayList<FuncaoCasoVO>();
@@ -116,6 +168,12 @@ public class FileIO {
 		return childrenVO;
 	}
 	
+	/**
+	 * Fill svo.
+	 *
+	 * @param sol the sol
+	 * @return the solucao vo
+	 */
 	private static SolucaoVO fillSVO(Solucao sol){
 		SolucaoVO solVO = new SolucaoVO();
 		Conceito c = cDAO.get(sol.getIdConceito());
@@ -123,6 +181,12 @@ public class FileIO {
 		return solVO;
 	}
 	
+	/**
+	 * Fill cvo.
+	 *
+	 * @param c the c
+	 * @return the conceito vo
+	 */
 	private static ConceitoVO fillCVO(Conceito c){
 		ConceitoVO cVO = new ConceitoVO();
 		cVO.setDescConceito(c.getDescConceito());
@@ -131,6 +195,12 @@ public class FileIO {
 		return cVO;
 	}
 	
+	/**
+	 * Fill img c onceito vo.
+	 *
+	 * @param imgC the img c
+	 * @return the imagem conceito vo
+	 */
 	private static ImagemConceitoVO fillImgCOnceitoVO(ImagemConceito imgC){
 		ImagemConceitoVO imgVO = new ImagemConceitoVO();
 		imgVO.setDirImagemConceito(imgC.getDirImagemConceito());
@@ -139,6 +209,12 @@ public class FileIO {
 		return imgVO;
 	}
 	
+	/**
+	 * Fill fc vo.
+	 *
+	 * @param fc the fc
+	 * @return the funcao caso vo
+	 */
 	private static FuncaoCasoVO fillFcVO(FuncaoCaso fc){
 		Funcao fGeral = fDAO.get(fc.getIdFuncao());
 		FuncaoVO fVO = new FuncaoVO(fGeral.getStrFuncaoVerbo(), fGeral.getStrFuncaoObjeto());
@@ -154,6 +230,16 @@ public class FileIO {
 		return fcVO;
 	}
 	
+	/**
+	 * Save case file.
+	 *
+	 * @param filename the filename
+	 * @param caso the caso
+	 * @param functionTree the function tree
+	 * @param matrix the matrix
+	 * @throws JAXBException the JAXB exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void saveCaseFile(String filename, Caso caso, BufferedImage functionTree, BufferedImage matrix) throws JAXBException, IOException{
 		File f = new File("temp");
 		if(!f.exists()){
@@ -192,6 +278,14 @@ public class FileIO {
 		FileUtils.deleteDirectory(f);
 	}
 	
+	/**
+	 * Load case file.
+	 *
+	 * @param file the file
+	 * @return the caso
+	 * @throws JAXBException the JAXB exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static Caso loadCaseFile(String file) throws JAXBException, IOException{
 		solucoes.clear();
 		
@@ -225,11 +319,26 @@ public class FileIO {
 		return caso;
 	}
 	
+	/**
+	 * Save case on db.
+	 *
+	 * @param casoVO the caso vo
+	 * @return the funcao caso
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static FuncaoCaso saveCaseOnDB(CasoVO casoVO) throws IOException{
 		FuncaoCasoVO fGeralVO = casoVO.getFuncaoGeral();
 		return saveCaseTree(fGeralVO, 0);
 	}
 	
+	/**
+	 * Save case tree.
+	 *
+	 * @param fcVO the fc vo
+	 * @param idFuncaoPai the id funcao pai
+	 * @return the funcao caso
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static FuncaoCaso saveCaseTree(FuncaoCasoVO fcVO, int idFuncaoPai) throws IOException{
 		FuncaoVO fVO = fcVO.getFuncao();
 		
@@ -265,6 +374,12 @@ public class FileIO {
 		return fCaso;
 	}
 	
+	/**
+	 * Save solutions.
+	 *
+	 * @param solsVO the sols vo
+	 * @param fc the fc
+	 */
 	private static void saveSolutions(List<SolucaoVO> solsVO, FuncaoCaso fc){
 		for(SolucaoVO solVO :  solsVO){
 			Conceito conceito = cDAO.getExact(solVO.getConceito().getStrConceito());
@@ -311,10 +426,21 @@ public class FileIO {
 		}
 	}
 	
+	/**
+	 * Compress dir.
+	 *
+	 * @param dirIn the dir in
+	 * @param FileOut the file out
+	 */
 	private static void compressDir(String dirIn, String FileOut) {
 		ZipUtil.pack(new File(dirIn), new File(FileOut));
 	}
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		/*CasoDAOImpl cDAO = new CasoDAOImpl();
 		

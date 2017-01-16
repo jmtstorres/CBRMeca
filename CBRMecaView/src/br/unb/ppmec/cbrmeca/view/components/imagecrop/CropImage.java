@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.components.imagecrop;
 
 import java.awt.BorderLayout;
@@ -26,32 +29,56 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CropImage.
+ */
 public class CropImage extends JFrame implements MouseListener,	MouseMotionListener {
 	
+	/** The file path. */
 	private String filePath;
 	
+	/** The listener save. */
 	private MouseListener listenerSave;
 	
+	/**
+	 * Instantiates a new crop image.
+	 *
+	 * @param filePath the file path
+	 */
 	public CropImage(String filePath) {
 		setUndecorated(true);
 		this.filePath = filePath;
 		initialize();
 	}
-	/**
-	 * 
-	 */
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The c4. */
 	int drag_status = 0, c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+	
+	/** The label. */
 	private JLabel label;
 
+	/** The panel. */
 	private JPanel panel;
 
+	/** The im. */
 	private ImagePanel im;
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String args[]) {
 		new CropImage("C:\\Users\\Jo�oMarcelo\\Desktop\\Untitled.png");
 	}
 
+	/**
+	 * Initialize.
+	 */
 	public void initialize() {
 		System.out.println(this.filePath);
 		im = new ImagePanel(this.filePath);
@@ -117,6 +144,14 @@ public class CropImage extends JFrame implements MouseListener,	MouseMotionListe
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
+	/**
+	 * Resize image.
+	 *
+	 * @param image the image
+	 * @param width the width
+	 * @param height the height
+	 * @return the image
+	 */
 	public Image resizeImage(Image image, int width, int height) {
 		if (image.getHeight(null) > image.getWidth(null)) {
 			int h = (150*image.getHeight(null))/image.getWidth(null);
@@ -129,6 +164,12 @@ public class CropImage extends JFrame implements MouseListener,	MouseMotionListe
 		}
 	}
 
+	/**
+	 * Gets the cropped.
+	 *
+	 * @return the cropped
+	 * @throws Exception the exception
+	 */
 	public BufferedImage getCropped() throws Exception {
 		int w = c1 > c3 ? c1 - c3 : c3 - c1;
 		int h = c2 > c4 ? c2 - c4 : c4 - c2;
@@ -164,6 +205,16 @@ public class CropImage extends JFrame implements MouseListener,	MouseMotionListe
 								h);
 	}
 	
+	/**
+	 * To buffered image.
+	 *
+	 * @param img the img
+	 * @param x the x
+	 * @param y the y
+	 * @param w the w
+	 * @param h the h
+	 * @return the buffered image
+	 */
 	public static BufferedImage toBufferedImage(Image img, int x, int y, int w, int h)
 	{
 	    if (img instanceof BufferedImage)
@@ -180,30 +231,56 @@ public class CropImage extends JFrame implements MouseListener,	MouseMotionListe
 	    return bimage.getSubimage(x, y, w, h);
 	}
 
+	/**
+	 * Save image file.
+	 *
+	 * @param path the path
+	 * @param img the img
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void saveImageFile(String path, BufferedImage img) throws IOException{
 		File save_path = new File(path);
 		ImageIO.write(img, "JPG", save_path);
 		System.out.println("Cropped image saved successfully.");
 	}
 	
+	/**
+	 * Save image file.
+	 *
+	 * @param path the path
+	 * @param img the img
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void saveImageFile(String path, Image img) throws IOException{
 		File save_path = new File(path);
 		ImageIO.write(toBufferedImage(img, 0, 0, img.getWidth(null), img.getHeight(null)), "JPG", save_path);
 		System.out.println("Cropped image saved successfully.");
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		repaint();
@@ -215,11 +292,19 @@ public class CropImage extends JFrame implements MouseListener,	MouseMotionListe
 		c2 = arg0.getY();
 	}
 	
+	/**
+	 * Sets the save on click listener.
+	 *
+	 * @param listener the new save on click listener
+	 */
 	public void setSaveOnClickListener(MouseAdapter listener){
 		this.listenerSave = listener;
 		label.addMouseListener(listenerSave);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		repaint();
@@ -248,6 +333,9 @@ public class CropImage extends JFrame implements MouseListener,	MouseMotionListe
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		repaint();
@@ -268,11 +356,20 @@ public class CropImage extends JFrame implements MouseListener,	MouseMotionListe
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		//repaint();
 	}
 	
+	/**
+	 * Out of bounds.
+	 *
+	 * @param arg0 the arg0
+	 * @return true, if successful
+	 */
 	private boolean outOfBounds(MouseEvent arg0){
 		int mouseX = arg0.getX();
 		int mouseY = arg0.getY();
@@ -287,6 +384,9 @@ public class CropImage extends JFrame implements MouseListener,	MouseMotionListe
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.Window#paint(java.awt.Graphics)
+	 */
 	public void paint(Graphics g) {
 		super.paint(g);
 		int w = c1 > c3 ? c1 - c3 : c3 - c1;

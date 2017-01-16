@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.dashboard;
 
 import java.awt.BorderLayout;
@@ -52,17 +55,31 @@ import br.unb.ppmec.cbrmeca.view.splash.SplashScreen;
 import br.unb.ppmec.cbrmeca.view.util.io.CaseIO;
 import br.unb.ppmec.cbrmeca.view.util.io.FileIO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CBRDashSearchCasesPanel.
+ */
 public class CBRDashSearchCasesPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7106078291303068980L;
+	
+	/** The text field. */
 	private JTextField textField;
+	
+	/** The list. */
 	private JList<Caso> list;
+	
+	/** The tree. */
 	private JPanelFunctionClassification tree;
+	
+	/** The panel_2. */
 	private JPanel panel_2;
+	
+	/** The matrix panel. */
 	private CasesMatrixPanel matrixPanel;
+	
+	/** The dialog_wait. */
 	private JDialog dialog_wait;
 
 	/**
@@ -367,6 +384,9 @@ public class CBRDashSearchCasesPanel extends JPanel {
 		fillList();
 	}
 	
+	/**
+	 * Creates the dialog.
+	 */
 	public void createDialog() {
 		dialog_wait = new JDialog();
 		ImageIcon icon = new ImageIcon(SplashScreen.class.getResource("/imgassets/wait.gif"));
@@ -381,6 +401,12 @@ public class CBRDashSearchCasesPanel extends JPanel {
 		dialog_wait.setVisible(true);
 	}
 	
+	/**
+	 * Gets the elementar level functions.
+	 *
+	 * @param fc the fc
+	 * @return the elementar level functions
+	 */
 	public List<FuncaoMatrizVO> getElementarLevelFunctions(FuncaoCaso fc) {
 		List<FuncaoMatrizVO> list = new ArrayList<FuncaoMatrizVO>();
 
@@ -413,6 +439,9 @@ public class CBRDashSearchCasesPanel extends JPanel {
 		return list;
 	}
 
+	/**
+	 * Fill list.
+	 */
 	private void fillList(){
 		CasoDAOImpl casoDao = new CasoDAOImpl();
 		List<Caso> casos = casoDao.loadAll();

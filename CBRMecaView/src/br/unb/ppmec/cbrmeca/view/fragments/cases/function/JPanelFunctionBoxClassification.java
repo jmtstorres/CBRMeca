@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.function;
 
 import java.awt.Color;
@@ -31,40 +34,61 @@ import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoDAOImpl;
 import java.awt.BorderLayout;
 import javax.swing.JLayeredPane;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPanelFunctionBoxClassification.
+ */
 public class JPanelFunctionBoxClassification extends JPanel {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1338656805293536362L;
 
+	/** The Constant BLOCK_WIDTH. */
 	public static final int BLOCK_WIDTH = 150;
+	
+	/** The Constant BLOCK_HEIGHT. */
 	public static final int BLOCK_HEIGHT = 150;
 
+	/** The funcao caso. */
 	private FuncaoCaso funcaoCaso;
+	
+	/** The c box tipo. */
 	private JComboBox<EFunctionType> cBoxTipo;
 
+	/** The text area. */
 	private JLabel textArea;
 
+	/** The c box efeito. */
 	private JComboBox<EFunctionEffect> cBoxEfeito;
+	
+	/** The c box necessidade. */
 	private JComboBox<EFunctionNecessity> cBoxNecessidade;
 
+	/** The lbl alerta. */
 	private JLabel lblAlerta;
 
+	/** The btn information. */
 	private JButton btnInformation;
 
+	/** The btn mechanics. */
 	private JButton btnMechanics;
 
+	/** The btn control. */
 	private JButton btnControl;
 
+	/** The btn power. */
 	private JButton btnPower;
 	
+	/** The enabled. */
 	private boolean enabled;
 	
+	/** The selected. */
 	private boolean selected;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param funcaoCaso the funcao caso
 	 */
 	public JPanelFunctionBoxClassification(FuncaoCaso funcaoCaso) {
 		setBackground(Color.WHITE);
@@ -230,6 +254,12 @@ public class JPanelFunctionBoxClassification extends JPanel {
 		checkOK();
 	}
 	
+	/**
+	 * Paint function scope.
+	 *
+	 * @param button the button
+	 * @param scopeID the scope id
+	 */
 	private void paintFunctionScope(JButton button, int scopeID){
 		if((funcaoCaso.getTipoEscopo() & scopeID) == scopeID){
 			button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
@@ -238,6 +268,12 @@ public class JPanelFunctionBoxClassification extends JPanel {
 		}
 	}
 	
+	/**
+	 * Update function scope.
+	 *
+	 * @param button the button
+	 * @param scope the scope
+	 */
 	private void updateFunctionScope(JButton button, EFunctionScope scope){
 		if(!enabled){
 			setSelected(!selected);
@@ -262,6 +298,9 @@ public class JPanelFunctionBoxClassification extends JPanel {
 		checkOK();
 	}
 
+	/**
+	 * Inits the combo.
+	 */
 	private void initCombo() {
 		for (EFunctionType type : EFunctionType.values()) {
 			cBoxTipo.addItem(type);
@@ -340,6 +379,9 @@ public class JPanelFunctionBoxClassification extends JPanel {
 		});
 	}
 	
+	/**
+	 * Check ok.
+	 */
 	private void checkOK(){
 		int efeito = cBoxEfeito.getSelectedIndex();
 		int necessidade = cBoxNecessidade.getSelectedIndex();
@@ -359,6 +401,11 @@ public class JPanelFunctionBoxClassification extends JPanel {
 		}
 	}
 
+	/**
+	 * Sets the box enabled.
+	 *
+	 * @param enabled the new box enabled
+	 */
 	public void setBoxEnabled(boolean enabled) {
 		this.enabled = enabled;
 		this.cBoxTipo.setEnabled(enabled);
@@ -370,18 +417,38 @@ public class JPanelFunctionBoxClassification extends JPanel {
 		this.btnPower.setEnabled(enabled);
 	}
 
+	/**
+	 * Gets the type.
+	 *
+	 * @return the type
+	 */
 	public EFunctionType getType() {
 		return (EFunctionType) cBoxTipo.getSelectedItem();
 	}
 
+	/**
+	 * Gets the funcao caso.
+	 *
+	 * @return the funcao caso
+	 */
 	public FuncaoCaso getFuncaoCaso() {
 		return funcaoCaso;
 	}
 
+	/**
+	 * Checks if is selected.
+	 *
+	 * @return true, if is selected
+	 */
 	public boolean isSelected() {
 		return selected;
 	}
 
+	/**
+	 * Sets the selected.
+	 *
+	 * @param selected the new selected
+	 */
 	public void setSelected(boolean selected) {
 		this.selected = selected;
 		if(selected){

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.splash;
 import java.awt.Color;
 import java.awt.Font;
@@ -8,17 +11,26 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SplashScreen.
+ */
 public class SplashScreen extends JFrame {
     
-    /**
-	 * 
-	 */
+    /** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -8372592507563345808L;
 	
+	/** The duration. */
 	private int duration;
 
+	/** The lbl new label_1. */
 	private JLabel lblNewLabel_1;
     
+    /**
+     * Instantiates a new splash screen.
+     *
+     * @param d the d
+     */
     public SplashScreen(int d) {
     	setUndecorated(true);
     	setBackground(new Color(0, 255, 0, 0));
@@ -48,6 +60,11 @@ public class SplashScreen extends JFrame {
         duration = d;
     }
     
+    /**
+     * Sets the text.
+     *
+     * @param text the new text
+     */
     public void setText(String text){
     	lblNewLabel_1.setText(text);
     	revalidate();
@@ -55,18 +72,29 @@ public class SplashScreen extends JFrame {
     	try {Thread.sleep(500);} catch (InterruptedException e) {}
     }
     
+    /**
+     * Show splash.
+     */
     public void showSplash() {        
         setVisible(true);
         revalidate();
         repaint();
     }
     
+    /**
+     * Show splash and exit.
+     */
     public void showSplashAndExit() {        
         showSplash();
         try {Thread.sleep(duration);} catch (InterruptedException e) {}
         dispose();
     }
     
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {        
         SplashScreen splash = new SplashScreen(3000);
         splash.showSplashAndExit();        

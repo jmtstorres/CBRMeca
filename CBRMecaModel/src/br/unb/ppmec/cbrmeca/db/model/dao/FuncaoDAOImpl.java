@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.db.model.dao;
 
 import java.util.List;
@@ -12,12 +15,22 @@ import br.unb.ppmec.cbrmeca.db.model.Funcao;
 import br.unb.ppmec.cbrmeca.model.interfaces.DaoBase;
 import br.unb.ppmec.cbrmeca.model.interfaces.IFuncaoDAO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FuncaoDAOImpl.
+ */
 public class FuncaoDAOImpl extends DaoBase<Funcao> implements IFuncaoDAO{
 	
+	/**
+	 * Instantiates a new funcao dao impl.
+	 */
 	public FuncaoDAOImpl() {
 		setSession(HibernateUtil.getSessionFactory());
 	}
 	
+	/* (non-Javadoc)
+	 * @see br.unb.ppmec.cbrmeca.model.interfaces.IFuncaoDAO#getByStrDescriptor(java.lang.String)
+	 */
 	@Override
 	public Funcao getByStrDescriptor(String pattern) {
 		String[] splitted = pattern.split(" ", 2);
@@ -40,6 +53,9 @@ public class FuncaoDAOImpl extends DaoBase<Funcao> implements IFuncaoDAO{
 		return null;
 	}
 	
+	/* (non-Javadoc)
+	 * @see br.unb.ppmec.cbrmeca.model.interfaces.IFuncaoDAO#getListByStrDescriptor(java.lang.String)
+	 */
 	@Override
 	public List<Funcao> getListByStrDescriptor(String pattern) {
 		String[] splitted = pattern.split(Pattern.quote(" "));
@@ -59,6 +75,11 @@ public class FuncaoDAOImpl extends DaoBase<Funcao> implements IFuncaoDAO{
 		return getListByCriterion(criterion4);
 	}
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		FuncaoDAOImpl fDAO = new FuncaoDAOImpl();
 		List<Funcao> list = fDAO.getListByStrDescriptor("Proteger usuário");

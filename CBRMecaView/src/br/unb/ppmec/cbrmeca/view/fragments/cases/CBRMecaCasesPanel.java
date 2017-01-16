@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases;
 
 import java.awt.BorderLayout;
@@ -61,19 +64,34 @@ import br.unb.ppmec.cbrmeca.view.util.io.CaseIO;
 import br.unb.ppmec.cbrmeca.view.util.io.FileIO;
 import br.unb.ppmec.cbrmeca.view.util.io.PanelImageExport;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CBRMecaCasesPanel.
+ */
 public class CBRMecaCasesPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -8562037625706065684L;
+	
+	/** The txtf_title. */
 	private JTextField txtf_title;
+	
+	/** The txtp_desc. */
 	private JTextPane txtp_desc;
+	
+	/** The function panel. */
 	private CasesFunctionPanel functionPanel;
 
+	/** The panel_matrix. */
 	private CasesMatrixPanel panel_matrix;
+	
+	/** The text field ano. */
 	private JFormattedTextField textFieldAno;
+	
+	/** The combo box. */
 	private JComboBox<EProjectType> comboBox;
+	
+	/** The dialog_wait. */
 	private JDialog dialog_wait;
 
 	/**
@@ -544,6 +562,11 @@ public class CBRMecaCasesPanel extends JPanel {
 		panel_bottom.add(lblNewLabel_1, gbc_lblNewLabel_1);
 	}
 	
+	/**
+	 * Load case tree.
+	 *
+	 * @param caso the caso
+	 */
 	private void loadCaseTree(Caso caso){
 		clearData();
 		functionPanel.loadFromCase(caso);
@@ -553,6 +576,12 @@ public class CBRMecaCasesPanel extends JPanel {
 		this.comboBox.setSelectedIndex(caso.getIdTipo());
 	}
 	
+	/**
+	 * Rename case.
+	 *
+	 * @param title the title
+	 * @return the string
+	 */
 	private String renameCase(String title){
 		String numberedTitle = null; 
 		int number = getVariationNumber(title);
@@ -567,6 +596,12 @@ public class CBRMecaCasesPanel extends JPanel {
 		return numberedTitle;
 	}
 	
+	/**
+	 * Gets the variation number.
+	 *
+	 * @param title the title
+	 * @return the variation number
+	 */
 	private int getVariationNumber(String title){
 		int number = 1;
 		
@@ -583,6 +618,9 @@ public class CBRMecaCasesPanel extends JPanel {
 		return number;
 	}
 
+	/**
+	 * Clear data.
+	 */
 	protected void clearData() {
 		txtf_title.setText("");
 		txtp_desc.setText("");
@@ -592,6 +630,9 @@ public class CBRMecaCasesPanel extends JPanel {
 		panel_matrix.clearAll();
 	}
 
+	/**
+	 * Creates the dialog.
+	 */
 	public void createDialog() {
 		dialog_wait = new JDialog();
 		ImageIcon icon = new ImageIcon(SplashScreen.class.getResource("/imgassets/wait.gif"));
@@ -606,6 +647,12 @@ public class CBRMecaCasesPanel extends JPanel {
 		dialog_wait.setVisible(true);
 	}
 
+	/**
+	 * Creates the formatter.
+	 *
+	 * @param s the s
+	 * @return the mask formatter
+	 */
 	protected MaskFormatter createFormatter(String s) {
 		MaskFormatter formatter = null;
 		try {
@@ -617,6 +664,13 @@ public class CBRMecaCasesPanel extends JPanel {
 		return formatter;
 	}
 
+	/**
+	 * Save function tree.
+	 *
+	 * @param panelStart the panel start
+	 * @param funcaoCaso the funcao caso
+	 * @return the int
+	 */
 	private int saveFunctionTree(CasesFunctionPanel panelStart,
 			FuncaoCaso funcaoCaso) {
 		List<CasesFunctionPanel> list = panelStart.getChildren();
@@ -654,6 +708,18 @@ public class CBRMecaCasesPanel extends JPanel {
 		return id;
 	}
 
+	/**
+	 * Save function.
+	 *
+	 * @param strFe the str fe
+	 * @param funcao the funcao
+	 * @param elementar the elementar
+	 * @param tipoEscopo the tipo escopo
+	 * @param tipoFuncao the tipo funcao
+	 * @param tipoEfeito the tipo efeito
+	 * @param tipoNecessidade the tipo necessidade
+	 * @return the funcao caso
+	 */
 	private FuncaoCaso saveFunction(	String strFe, 
 										FuncaoCaso funcao,
 										boolean elementar,
@@ -707,6 +773,12 @@ public class CBRMecaCasesPanel extends JPanel {
 		return fc;
 	}
 
+	/**
+	 * Save solution.
+	 *
+	 * @param funcao the funcao
+	 * @param caso the caso
+	 */
 	private void saveSolution(FuncaoMatrizVO funcao, Caso caso) {
 		List<CasesMatrixRow> listRows = panel_matrix.getList();
 		if (listRows == null) {
@@ -747,10 +819,18 @@ public class CBRMecaCasesPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * Save words.
+	 */
 	private void saveWords(){
 		
 	}
 
+	/**
+	 * Params ok.
+	 *
+	 * @return the list
+	 */
 	private List<String> paramsOk() {
 		List<String> paramsToWatch = new ArrayList<String>();
 
@@ -786,6 +866,12 @@ public class CBRMecaCasesPanel extends JPanel {
 		return paramsToWatch;
 	}
 
+	/**
+	 * Check function tree ok.
+	 *
+	 * @param panelStart the panel start
+	 * @return true, if successful
+	 */
 	private boolean checkFunctionTreeOk(CasesFunctionPanel panelStart) {
 		List<CasesFunctionPanel> list = panelStart.getChildren();
 
@@ -811,6 +897,11 @@ public class CBRMecaCasesPanel extends JPanel {
 		return true;
 	}
 
+	/**
+	 * Check solutions ok.
+	 *
+	 * @return true, if successful
+	 */
 	private boolean checkSolutionsOk() {
 		List<CasesMatrixRow> listRows = panel_matrix.getList();
 		if (listRows == null || listRows.size() == 0) {
@@ -830,6 +921,11 @@ public class CBRMecaCasesPanel extends JPanel {
 		return true;
 	}
 
+	/**
+	 * Checks if is editing.
+	 *
+	 * @return true, if is editing
+	 */
 	public boolean isEditing() {
 		if(functionPanel.getChildren().size() > 0){
 			System.out.println("1");
@@ -854,6 +950,13 @@ public class CBRMecaCasesPanel extends JPanel {
 		return false;
 	}
 	
+	/**
+	 * Gets the elementar level functions.
+	 *
+	 * @param caso the caso
+	 * @param fc the fc
+	 * @return the elementar level functions
+	 */
 	public List<FuncaoMatrizVO> getElementarLevelFunctions(Caso caso, FuncaoCaso fc) {
 		List<FuncaoMatrizVO> list = new ArrayList<FuncaoMatrizVO>();
 

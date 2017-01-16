@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.notification;
 
 import java.awt.Color;
@@ -13,23 +16,37 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Notification.
+ */
 public class Notification extends JFrame {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -2817350343105968579L;
+	
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The lbl message. */
 	private JTextPane lblMessage;
+	
+	/** The lbl title. */
 	private JLabel lblTitle;
 	
+	/** The Constant FAIL. */
 	public static final int FAIL = 0;
+	
+	/** The Constant SUCCESS. */
 	public static final int SUCCESS = 1;
 	
+	/** The lbl icon. */
 	private JLabel lblIcon;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -44,6 +61,13 @@ public class Notification extends JFrame {
 		});
 	}
 	
+	/**
+	 * Sets the strings.
+	 *
+	 * @param title the title
+	 * @param message the message
+	 * @param type the type
+	 */
 	public void setStrings(String title, String message, int type){
 		lblMessage.setText(message);
 		lblTitle.setText(title);

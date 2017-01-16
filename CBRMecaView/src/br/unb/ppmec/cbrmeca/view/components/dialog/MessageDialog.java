@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.components.dialog;
 
 import java.awt.Color;
@@ -19,19 +22,25 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MessageDialog.
+ */
 public class MessageDialog extends JDialog {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2229732454311155093L;
 	
+	/** The content pane. */
 	private JPanel contentPane;
 
+	/** The lbl new label. */
 	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -134,6 +143,11 @@ public class MessageDialog extends JDialog {
 		panel_1.add(lblOk, gbc_lblOk);
 	}
 	
+	/**
+	 * Sets the text.
+	 *
+	 * @param text the new text
+	 */
 	public void setText(String text){
 		lblNewLabel.setText(text);
 	}

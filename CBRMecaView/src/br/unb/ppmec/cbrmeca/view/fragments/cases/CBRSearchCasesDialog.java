@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases;
 
 import java.awt.BorderLayout;
@@ -39,8 +42,17 @@ import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoDAOImpl;
 import br.unb.ppmec.cbrmeca.db.model.dao.SolucaoDAOImpl;
 import br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.vo.FuncaoMatrizVO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CBRSearchCasesDialog.
+ */
 public class CBRSearchCasesDialog extends JDialog {
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -54,12 +66,16 @@ public class CBRSearchCasesDialog extends JDialog {
 		});
 	}
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7106078291303068980L;
+	
+	/** The text field. */
 	private JTextField textField;
+	
+	/** The list. */
 	private JList<Caso> list;
+	
+	/** The caso. */
 	protected Caso caso;
 
 	/**
@@ -230,6 +246,12 @@ public class CBRSearchCasesDialog extends JDialog {
 		fillList();
 	}
 	
+	/**
+	 * Gets the elementar level functions.
+	 *
+	 * @param fc the fc
+	 * @return the elementar level functions
+	 */
 	public List<FuncaoMatrizVO> getElementarLevelFunctions(FuncaoCaso fc) {
 		List<FuncaoMatrizVO> list = new ArrayList<FuncaoMatrizVO>();
 
@@ -262,6 +284,9 @@ public class CBRSearchCasesDialog extends JDialog {
 		return list;
 	}
 
+	/**
+	 * Fill list.
+	 */
 	private void fillList(){
 		CasoDAOImpl casoDao = new CasoDAOImpl();
 		List<Caso> casos = casoDao.loadAll();
@@ -277,6 +302,11 @@ public class CBRSearchCasesDialog extends JDialog {
 		list.repaint();
 	}
 
+	/**
+	 * Gets the caso.
+	 *
+	 * @return the caso
+	 */
 	public Caso getCaso() {
 		return caso;
 	}

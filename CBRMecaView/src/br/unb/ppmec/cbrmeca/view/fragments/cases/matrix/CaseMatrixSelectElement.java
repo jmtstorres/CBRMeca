@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.matrix;
 
 import java.awt.BorderLayout;
@@ -33,23 +36,35 @@ import br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.events.ConceptAddedEvent
 import br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.events.ConceptMatrixObserver;
 import br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.events.MatrixConceptAddedListener;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CaseMatrixSelectElement.
+ */
 public class CaseMatrixSelectElement extends JFrame implements
 		MatrixConceptAddedListener {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -5155983696059444619L;
 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The text field. */
 	private JTextField textField;
+	
+	/** The panel_concepts. */
 	private JPanel panel_concepts;
 
+	/** The panel_scroll. */
 	private ScrollPane panel_scroll;
+	
+	/** The cmre. */
 	private CaseMatrixRegisterElement cmre = null;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -67,6 +82,8 @@ public class CaseMatrixSelectElement extends JFrame implements
 
 	/**
 	 * Create the frame.
+	 *
+	 * @param parent the parent
 	 */
 	public CaseMatrixSelectElement(JFrame parent) {
 		ConceptMatrixObserver.getInstance().addConceptAddedListener(this);
@@ -286,6 +303,9 @@ public class CaseMatrixSelectElement extends JFrame implements
 		panel_scroll.add(panel_concepts, BorderLayout.CENTER);
 	}
 
+	/* (non-Javadoc)
+	 * @see br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.events.MatrixConceptAddedListener#conceptAdded(br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.events.ConceptAddedEvent)
+	 */
 	@Override
 	public void conceptAdded(ConceptAddedEvent event) {
 		System.out.println("Recebeu o evento");

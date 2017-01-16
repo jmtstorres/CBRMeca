@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.dialog;
 
 import java.awt.BorderLayout;
@@ -18,19 +21,28 @@ import javax.swing.border.LineBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ConfirmationDialog.
+ */
 public class ConfirmationDialog extends JDialog {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 7003082256689178762L;
+	
+	/** The content panel. */
 	private final JPanel contentPanel = new JPanel();
 	
+	/** The confirmed. */
 	private boolean confirmed = false;
+	
+	/** The lbl new label. */
 	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		try {
@@ -116,14 +128,29 @@ public class ConfirmationDialog extends JDialog {
 		}
 	}
 	
+	/**
+	 * Sets the message.
+	 *
+	 * @param message the new message
+	 */
 	public void setMessage(String message){
 		this.lblNewLabel.setText("<html>" + message + "</html>");
 	}
 
+	/**
+	 * Checks if is confirmed.
+	 *
+	 * @return true, if is confirmed
+	 */
 	public boolean isConfirmed() {
 		return confirmed;
 	}
 
+	/**
+	 * Sets the confirmed.
+	 *
+	 * @param confirmed the new confirmed
+	 */
 	public void setConfirmed(boolean confirmed) {
 		this.confirmed = confirmed;
 	}

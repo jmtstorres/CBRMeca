@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.matrix;
 
 import java.awt.BorderLayout;
@@ -35,34 +38,52 @@ import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoDAOImpl;
 import br.unb.ppmec.cbrmeca.view.fragments.cases.function.JPanelFunctionBoxClassification;
 import br.unb.ppmec.cbrmeca.view.fragments.cases.matrix.vo.FuncaoMatrizVO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CaseMatrixSimilarFunctionsDialog.
+ */
 public class CaseMatrixSimilarFunctionsDialog extends JDialog {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -2793870212125658926L;
 
+	/** The Constant AUTO_NOT_FOUND. */
 	private static final String AUTO_NOT_FOUND = "<html>Não foram encontradas funções semelhantes no modo automático. Utilize a busca, caso deseje fazer o relacionamento manualmente.</html>";
+	
+	/** The Constant SEARCH_NOT_FOUND. */
 	private static final String SEARCH_NOT_FOUND = "<html>Não foram encontradas funções com estes termos de busca.</html>";
 
+	/** The dao. */
 	private FuncaoDAOImpl fDAO = new FuncaoDAOImpl();
+	
+	/** The fc dao. */
 	private FuncaoCasoDAOImpl fcDAO = new FuncaoCasoDAOImpl();
 
+	/** The content panel. */
 	private final JPanel contentPanel = new JPanel();
+	
+	/** The text field. */
 	private JTextField textField;
 
+	/** The panel_casos. */
 	private JPanel panel_casos;
 
+	/** The lbl not found. */
 	private JLabel lblNotFound;
 
+	/** The similar cases. */
 	private List<FuncaoCaso> similarCases;
 
+	/** The list. */
 	private List<JPanelFunctionBoxClassification> list;
 
+	/** The cancelled. */
 	protected boolean cancelled = false;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		try {
@@ -81,6 +102,8 @@ public class CaseMatrixSimilarFunctionsDialog extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 *
+	 * @param vo the vo
 	 */
 	public CaseMatrixSimilarFunctionsDialog(FuncaoMatrizVO vo) {
 
@@ -312,6 +335,11 @@ public class CaseMatrixSimilarFunctionsDialog extends JDialog {
 		loadlist(vo);
 	}
 
+	/**
+	 * Loadlist.
+	 *
+	 * @param vo the vo
+	 */
 	private void loadlist(FuncaoMatrizVO vo) {
 		clearPanel();
 		
@@ -335,6 +363,9 @@ public class CaseMatrixSimilarFunctionsDialog extends JDialog {
 		}
 	}
 
+	/**
+	 * Clear panel.
+	 */
 	protected void clearPanel() {
 		panel_casos.removeAll();
 		panel_casos.revalidate();
@@ -345,6 +376,9 @@ public class CaseMatrixSimilarFunctionsDialog extends JDialog {
 		}
 	}
 
+	/**
+	 * Fill panel.
+	 */
 	protected void fillPanel() {
 		panel_casos.removeAll();
 		panel_casos.revalidate();
@@ -370,6 +404,11 @@ public class CaseMatrixSimilarFunctionsDialog extends JDialog {
 		}
 	}
 
+	/**
+	 * Fill panel.
+	 *
+	 * @param similarCases the similar cases
+	 */
 	private void fillPanel(List<FuncaoCaso> similarCases) {
 
 		for (FuncaoCaso funcaoCaso : similarCases) {
@@ -406,10 +445,20 @@ public class CaseMatrixSimilarFunctionsDialog extends JDialog {
 		}
 	}
 
+	/**
+	 * Checks if is cancelled.
+	 *
+	 * @return true, if is cancelled
+	 */
 	public boolean isCancelled() {
 		return cancelled;
 	}
 
+	/**
+	 * Gets the similar cases.
+	 *
+	 * @return the similar cases
+	 */
 	public List<FuncaoCaso> getSimilarCases() {
 		return similarCases;
 	}

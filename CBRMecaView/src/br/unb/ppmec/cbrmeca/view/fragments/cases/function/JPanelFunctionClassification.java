@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.unb.ppmec.cbrmeca.view.fragments.cases.function;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -24,24 +27,42 @@ import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoCasoDAOImpl;
 import br.unb.ppmec.cbrmeca.view.fragments.cases.function.visual.Node;
 import br.unb.ppmec.cbrmeca.view.fragments.cases.function.visual.Tree;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPanelFunctionClassification.
+ */
 public class JPanelFunctionClassification extends JPanel {
 	
-    /**
-	 * 
-	 */
+    /** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The fc dao. */
 	private FuncaoCasoDAOImpl fcDao = new FuncaoCasoDAOImpl();
 	
+	/** The block_width. */
 	private int block_width = JPanelFunctionBoxClassification.BLOCK_WIDTH;
+	
+	/** The block_height. */
 	private int block_height = JPanelFunctionBoxClassification.BLOCK_HEIGHT;
 	
+	/** The dim. */
 	private Dimension dim = new Dimension(1, 1);
+	
+	/** The arvore. */
 	private Tree<FuncaoCaso> arvore;
 	
+	/** The image. */
 	private BufferedImage image;
+	
+	/** The editable. */
 	private boolean editable = true;
+	
+	/** The combo box. */
 	private JComboBox<Caso> comboBox;
 	
+	/**
+	 * Instantiates a new j panel function classification.
+	 */
 	public JPanelFunctionClassification() {
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(Color.WHITE);
@@ -50,11 +71,19 @@ public class JPanelFunctionClassification extends JPanel {
 		loadCombo();
 	}
 	
+	/**
+	 * Sets the editable.
+	 *
+	 * @param editable the new editable
+	 */
 	public void setEditable(boolean editable){
 		this.editable = editable;
 		comboBox.setVisible(editable);
 	}
 	
+	/**
+	 * Load combo.
+	 */
 	private void loadCombo(){
 		comboBox = new JComboBox<Caso>();
 		comboBox.setBounds(10, 11, 430, 20);
@@ -80,6 +109,11 @@ public class JPanelFunctionClassification extends JPanel {
 		});
 	}
 
+	/**
+	 * Sets the case id.
+	 *
+	 * @param caseID the new case id
+	 */
 	public void setCaseID(int caseID) {
 		arvore = getCaseTree(caseID);
 		dim  = new Dimension(0, 0);
@@ -94,12 +128,21 @@ public class JPanelFunctionClassification extends JPanel {
 		repaint();
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
+	 */
 	@Override
 	public void paint(Graphics g) {
 		g.drawImage(image, 0, 0, null);
 		super.paint(g);
 	}
 	
+	/**
+	 * Gets the case tree.
+	 *
+	 * @param funcao the funcao
+	 * @return the case tree
+	 */
 	public Tree<FuncaoCaso> getCaseTree(int funcao){
 		FuncaoCaso fc = fcDao.get(funcao);
 		Tree<FuncaoCaso> arvore = new Tree<FuncaoCaso>(fc);
@@ -113,6 +156,12 @@ public class JPanelFunctionClassification extends JPanel {
 		return arvore;
 	}
 	
+	/**
+	 * Search for children.
+	 *
+	 * @param node the node
+	 * @return the list
+	 */
 	private List<Node<FuncaoCaso>> searchForChildren(Node<FuncaoCaso> node){
 		System.out.println("adfasdfasdfasd");
 		List<Node<FuncaoCaso>> nodeList = new ArrayList<>();
@@ -146,6 +195,11 @@ public class JPanelFunctionClassification extends JPanel {
 		return nodeList;
 	}
 	
+	/**
+	 * Generate tree.
+	 *
+	 * @param arvore the arvore
+	 */
 	private void generateTree(Tree<FuncaoCaso> arvore){
 		removeAll();
 		loadCombo();
@@ -161,6 +215,13 @@ public class JPanelFunctionClassification extends JPanel {
 		repaint();
 	}
 	
+	/**
+	 * Prints the nodes.
+	 *
+	 * @param f the f
+	 * @param initialSpaceX the initial space x
+	 * @param levelY the level y
+	 */
 	private void printNodes(Node<FuncaoCaso> f, int initialSpaceX, int levelY){
 		int circleHeight = block_height;
 		int circleWidth = block_width;
@@ -241,6 +302,11 @@ public class JPanelFunctionClassification extends JPanel {
 		repaint();
 	}
 
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {
         JFrame jFrame = new JFrame();
         JPanelFunctionClassification panel = new JPanelFunctionClassification();
