@@ -14,10 +14,21 @@ import br.unb.ppmec.cbrmeca.db.model.Funcao;
 import br.unb.ppmec.cbrmeca.db.model.FuncaoCaso;
 import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoDAOImpl;
 
+/**
+ * Classe WordUtil.
+ * @author Joao Marcelo
+ */
 public final class WordUtil {
 	
+	/** Logger. */
 	private static final Logger logger = LoggerFactory.getLogger(WordUtil.class);
 	
+	/**
+	 * Retorna as palavras chave do descritor da funcao.
+	 *
+	 * @param fCaso - funcao caso
+	 * @return Set de palavras chave
+	 */
 	public static Set<String> keywords(FuncaoCaso fCaso) {
 		Set<String> words = new LinkedHashSet<>();
 
@@ -36,6 +47,12 @@ public final class WordUtil {
 		return words;
 	}
 	
+	/**
+	 * Retorna as palavras chave do descritor da funcao.
+	 *
+	 * @param fDescriptor - descritor da funcao caso
+	 * @return Set de palavras chave
+	 */
 	public static Set<String> keywords(String fDescriptor) {
 		Set<String> words = new LinkedHashSet<>();
 
@@ -49,6 +66,14 @@ public final class WordUtil {
 		return words;
 	}
 	
+	/**
+	 * Busca por palavras similares.
+	 *
+	 * @param vec - vetor de similaridade gramatical
+	 * @param fCaso - funcao caso
+	 * @param fDescriptor - descritor da funcao
+	 * @return lista de palavras similares
+	 */
 	public static List<String> similarWords(Word2Vec vec, FuncaoCaso fCaso, String fDescriptor){
 		List<String> wordBag = new ArrayList<String>();
 		if(vec != null){
@@ -73,5 +98,4 @@ public final class WordUtil {
 		
 		return wordBag;
 	}
-
 }

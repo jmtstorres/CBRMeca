@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package br.com.ppmec.cbrmeca.control;
 
 import java.io.FileNotFoundException;
@@ -34,32 +37,74 @@ import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoCasoDAOImpl;
 import br.unb.ppmec.cbrmeca.db.model.dao.FuncaoDAOImpl;
 import br.unb.ppmec.cbrmeca.db.model.dao.SolucaoDAOImpl;
 
+/**
+ * Classe principal do motor de aplicação.
+ * @author Joao Marcelo
+ */
 public final class CBREngine implements ICBREngine {
 	
-	private Logger logger = LoggerFactory.getLogger(CBREngine.class);
 
+	/*
+	 * Pesos de cada um dos itens de escopo das funções.
+	 */
+	/** Constante WHEIGHT_SCOPE. */
 	private static final float WHEIGHT_SCOPE = 10;
+	
+	/** Constante WHEIGHT_CASETYPE. */
 	private static final float WHEIGHT_CASETYPE = 10;
+	
+	/** Constante WHEIGHT_TYPE. */
 	private static final float WHEIGHT_TYPE = 10;
+	
+	/** Constante WHEIGHT_NEED. */
 	private static final float WHEIGHT_NEED = 10;
+	
+	/** Constante WHEIGHT_EFFECT. */
 	private static final float WHEIGHT_EFFECT = 10;
 	
+	/** Sorteio ascendente. */
+	public static boolean ASC = true;
+    
+	/** Sorteio descendente. */
+    public static boolean DESC = false;
+	
+	/*
+	 * Pesos de cada um dos itens de escopo das funções.
+	 */
+	/** Word2Vec - Vetor de similaridade de vocábulos. */
 	private Word2Vec vec = null;
 	
+	/** Nível de similaridade de funções 
+	 *  a nível de parametrização*/
 	private float targetSimilarity = 0.7f;
+
+	/** Logger Padrão. */
+	private Logger logger = LoggerFactory.getLogger(CBREngine.class);
 	
+	/** Instância única da classe. */
 	private static final CBREngine INSTANCE = new CBREngine();
 	
+	/**
+	 * Retorna a instância única CBREngine.
+	 *
+	 * @return instância de CBREngine
+	 */
 	public static final CBREngine getInstance(){
 		return INSTANCE;
 	}
 	
 	/**
-	 * 
+	 * Construtor da classe.
 	 */
 	private CBREngine() {
 	}
 	
+	/**
+	 * Inicializa o motor.
+	 *
+	 * @param usesWordModel - indica o uso do modelo gramatical
+	 * @param path  - caminho do modelo no sistema de arquivos
+	 */
 	public void initialize(boolean usesWordModel, String path){
 		logger.info("Inicializando...");
 		if(usesWordModel){
@@ -74,6 +119,11 @@ public final class CBREngine implements ICBREngine {
 		logger.info("Inicializado.");
 	}
 
+	/**
+	 * Método Main para testes.
+	 *
+	 * @param args - argumentos de linha de comando
+	 */
 	public static void main(String[] args) {
 		CBREngine engine = CBREngine.getInstance();
 		
@@ -99,6 +149,9 @@ public final class CBREngine implements ICBREngine {
 		System.exit(0);
 	}
 	
+	/* (non-Javadoc)
+	 * @see br.com.ppmec.cbrmeca.control.models.ICBREngine#retrieveSimilar(br.unb.ppmec.cbrmeca.db.model.FuncaoCaso, int, java.lang.String)
+	 */
 	@Override
 	public List<FuncaoCaso> retrieveSimilar(FuncaoCaso fCaso, int idTipoCaso, String fDescriptor) {
 
@@ -129,6 +182,14 @@ public final class CBREngine implements ICBREngine {
 		return casos;
 	}
 
+	/**
+	 * Recupera funções similares que não sejam exatamente semelhantes.
+	 *
+	 * @param fCaso - Funcao caso
+	 * @param idTipoCaso - tipo do caso
+	 * @param fDescriptor - descritor da funcao
+	 * @return lista de funcoes semelhantes
+	 */
 	private List<FuncaoCaso> retrieveAlternatives(FuncaoCaso fCaso, int idTipoCaso, String fDescriptor){
 
 		FuncaoCasoDAOImpl fCasoDAO = new FuncaoCasoDAOImpl();
@@ -172,6 +233,12 @@ public final class CBREngine implements ICBREngine {
 	
 
 	
+	/**
+	 * Verifica funcoes com gramatica exatamente semelhante.
+	 *
+	 * @param strFunctionDescriptor - descritor gramatical da funcao
+	 * @return lista de funcoes semelhantes
+	 */
 	private List<FuncaoCaso> checkExactMatch(String strFunctionDescriptor){
 		FuncaoDAOImpl fDao = new FuncaoDAOImpl();
 		FuncaoCasoDAOImpl fcDao = new FuncaoCasoDAOImpl();
@@ -186,6 +253,13 @@ public final class CBREngine implements ICBREngine {
 		return fCasos;
 	}
 	
+	/**
+	 * Verifica a semelhanca das funcoes gramaticalmente.
+	 *
+	 * @param fCaso - funcao caso para avaliacao
+	 * @param toMatch  - lista de funcoes para verificacao
+	 * @return true, se semelhantes
+	 */
 	private boolean similarFunctions(FuncaoCaso fCaso, List<String> toMatch){
 		int score = 0;
 		
@@ -202,6 +276,14 @@ public final class CBREngine implements ICBREngine {
 		return (score > 0);
 	}
 	
+	/**
+	 * Calcula a similaridade entre as parametrizacoes de funcoes.
+	 *
+	 * @param funcao - funcao base de calculo
+	 * @param funcaoToMatch - funcao a ser avaliada
+	 * @param idTipoCaso - tipo do caso
+	 * @return similaridade
+	 */
 	private float weightSimilarity(FuncaoCaso funcao, FuncaoCaso funcaoToMatch, int idTipoCaso){
 		
 		CasoDAOImpl cDAO = new CasoDAOImpl();
@@ -251,6 +333,11 @@ public final class CBREngine implements ICBREngine {
 		return similarity;
 	}
 	
+	/**
+	 * Lista em log funcoes semelhantes encontradas.
+	 *
+	 * @param funcoesSimilares - funcoes para listagem
+	 */
 	private void printFound(List<FuncaoCaso> funcoesSimilares){
 		
 		CasoDAOImpl cDAO = new CasoDAOImpl();
@@ -276,6 +363,9 @@ public final class CBREngine implements ICBREngine {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see br.com.ppmec.cbrmeca.control.models.ICBREngine#getSolutionsForCase(java.util.List)
+	 */
 	@Override
 	public Map<Integer, Integer> getSolutionsForCase(List<FuncaoCaso> similarCases) {
 		SolucaoDAOImpl solDAO = new SolucaoDAOImpl();
@@ -304,6 +394,11 @@ public final class CBREngine implements ICBREngine {
 		return sortedMap;
 	}
 	
+	/**
+	 * Lista em log as solucoes encontradas.
+	 *
+	 * @param map - mapa para listagem 
+	 */
 	public void printMap(Map<Integer, Integer> map)
     {
 		ConceitoDAOImpl cDAO = new ConceitoDAOImpl();
@@ -316,9 +411,15 @@ public final class CBREngine implements ICBREngine {
         }
     }
 	
-	public static boolean ASC = true;
-    public static boolean DESC = false;
 
+
+	/**
+	 * Sorteio por comparacao.
+	 *
+	 * @param unsortMap - mapa para ordenacao
+	 * @param order - tipo de ordenacao
+	 * @return mapa rearranjado
+	 */
 	private static Map<Integer, Integer> sortByComparator(
 			Map<Integer, Integer> unsortMap, final boolean order) {
 
@@ -345,20 +446,41 @@ public final class CBREngine implements ICBREngine {
 		return sortedMap;
 	}
 
-	private int isActive(int escopofuncao, int scopeID) {
+	/**
+	 * Verifica se o escopo da funcao esta ativo.
+	 *
+	 * @param escopofuncao - escopo da funcao
+	 * @param scopeID - id do escopo
+	 * @return true se está ativo
+	 */
+	private boolean isActive(int escopofuncao, int scopeID) {
 		if ((escopofuncao & scopeID) == scopeID) {
-			return 1;
+			return true;
 		}
 
-		return 0;
+		return false;
 	}
 	
+	/**
+	 * Verifica se escopo é igual ao passado.
+	 *
+	 * @param scope1 the scope1
+	 * @param scope2 the scope2
+	 * @param scopeID the scope id
+	 * @return inteiro indicando se corresponde ou nao
+	 */
 	private int matches(int scope1, int scope2, int scopeID) {
 		boolean matches = isActive(scope1, scopeID) == isActive(scope2, scopeID);
 		logger.info("Scope1: " + scope1 + " | Scope2: " + scope2 + "| scope: " + scopeID + " | result: " + (matches ? 1 : 0));
 		return (matches ? 1 : 0);
 	}
 
+	/**
+	 * retorna o ID da funcao caso raiz.
+	 *
+	 * @param idFuncaoCaso  - id da funcao para busca
+	 * @return id da funcao caso raiz
+	 */
 	private int getIDFuncaoCasoRaiz(int idFuncaoCaso) {
 		FuncaoCasoDAOImpl fdao = new FuncaoCasoDAOImpl();
 		FuncaoCaso fCaso = fdao.getByIdFuncaoCaso(idFuncaoCaso);
